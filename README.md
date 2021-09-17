@@ -18,10 +18,9 @@ Language pair | Model BLEU | Flores101 BLEU |Sentences| Download model
 |Catalan-Italian | 32.37 |15.31 | 2563642 | [cat-ita-2021-09-06-1630941629.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-ita-2021-09-06-1630941629.zip)
 |Dutch-Catalan | 28.04 |15.79 | 1838820 | [nld-cat-2021-09-07-1631023781.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/nld-cat-2021-09-07-1631023781.zip)
 |Catalan-Dutch | 26.00 |14.89 | 1838820 | [cat-nld-2021-09-07-1631052167.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-nld-2021-09-07-1631052167.zip)
+|Portuguese-Catalan | 38.13 |28.45 | 2037197 | [por-cat-2021-09-17-1631856236.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/por-cat-2021-09-17-1631856236.zip)
 |Spanish-Catalan | 91.27 |18.09 | 6545128 | [spa-cat-2021-09-03-1630697264.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/spa-cat-2021-09-03-1630697264.zip)
 |Catalan-Spanish | 89.70 |14.10 | 6545128 | [cat-spa-2021-09-06-1630913216.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-spa-2021-09-06-1630913216.zip)
-
-
 # Using the models
 
 You can use the models using https://github.com/OpenNMT/CTranslate2
