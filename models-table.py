@@ -92,7 +92,8 @@ def convert_iso_639_3_to_string(language_pair):
         "cat" : "Catalan",
         "deu" : "German",
         "ita" : "Italian",
-        "nld" : "Dutch"
+        "nld" : "Dutch",
+        "por" : "Portuguese"
     }
 
     for iso in languages.keys():
