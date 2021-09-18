@@ -21,8 +21,48 @@ Language pair | Model BLEU | Flores101 BLEU |Sentences| Download model
 |Portuguese-Catalan | 38.13 |28.45 | 2037197 | [por-cat-2021-09-17-1631856236.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/por-cat-2021-09-17-1631856236.zip)
 |Spanish-Catalan | 91.27 |18.09 | 6545128 | [spa-cat-2021-09-03-1630697264.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/spa-cat-2021-09-03-1630697264.zip)
 |Catalan-Spanish | 89.70 |14.10 | 6545128 | [cat-spa-2021-09-06-1630913216.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-spa-2021-09-06-1630913216.zip)
+
 # Using the models
 
 You can use the models using https://github.com/OpenNMT/CTranslate2
 
 At Softcatalà we built also command line tools to translate TXT and PO files. See: https://github.com/Softcatala/nmt-softcatala/tree/master/use-models-tools
+
+
+Download the model and unpack it:
+
+```
+wget https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/eng-cat-2021-09-04.zip
+unzip eng-cat-2021-09-04.zip
+```
+
+Simple translation:
+
+```
+python
+
+import ctranslate2
+translator = ctranslate2.Translator("ctranslate2/")
+translator.translate_batch([["▁H", "ello", "▁world", "!"]])
+>>> print(translator.translate_batch([["▁H", "ello", "▁world", "!"]]))
+[[{'tokens': ['▁Hola', '▁món', '!']}]]
+
+```
+
+Simple tokenization & translation:
+
+
+```
+python
+
+import pyonmttok
+tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = "tokenizer/sp_m.model")
+tokenized=tokenizer.tokenize("Hello world!")
+print(tokenized)
+
+import ctranslate2
+translator = ctranslate2.Translator("ctranslate2/")
+translated = translator.translate_batch([tokenized[0]])
+tokenizer.detokenize(translated[0][0]['tokens'])
+Hola món!
+```
