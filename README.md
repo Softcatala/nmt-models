@@ -22,38 +22,40 @@ Language pair | Model BLEU | Flores101 BLEU |Sentences| Download model
 |Spanish-Catalan | 91.27 |18.09 | 6545128 | [spa-cat-2021-09-03-1630697264.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/spa-cat-2021-09-03-1630697264.zip)
 |Catalan-Spanish | 89.70 |14.10 | 6545128 | [cat-spa-2021-09-06-1630913216.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-spa-2021-09-06-1630913216.zip)
 
+Legend:
+* *Model BLEU* colum indicates the models' BLEU score against the corpus test dataset (from train/dev/test)
+* *Flores101 BLEU* colum indicates the models' BLEU score the [Flores101 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
+* *Sentences* Number of sentences in the corpus used for training
+
 # Using the models
 
-You can use the models using https://github.com/OpenNMT/CTranslate2
+You can use the models with https://github.com/OpenNMT/CTranslate2 which offers fast inference.
 
 At Softcatalà we built also command line tools to translate TXT and PO files. See: https://github.com/Softcatala/nmt-softcatala/tree/master/use-models-tools
 
 
 Download the model and unpack it:
 
-```
-wget https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/eng-cat-2021-09-04.zip
-unzip eng-cat-2021-09-04.zip
+```bash
+wget https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/eng-cat-2021-09-04-1630790361.zip
+unzip eng-cat-2021-09-04-1630790361.zip
 ```
 
-Simple translation:
+Simple translation using Python:
 
-```
-python
+```python
 
 import ctranslate2
 translator = ctranslate2.Translator("ctranslate2/")
-translator.translate_batch([["▁H", "ello", "▁world", "!"]])
->>> print(translator.translate_batch([["▁H", "ello", "▁world", "!"]]))
+translator.translate_batch([["▁Hello", "▁world", "!"]])
 [[{'tokens': ['▁Hola', '▁món', '!']}]]
 
 ```
 
-Simple tokenization & translation:
+Simple tokenization & translation using Python:
 
 
-```
-python
+```python
 
 import pyonmttok
 tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = "tokenizer/sp_m.model")
@@ -63,6 +65,6 @@ print(tokenized)
 import ctranslate2
 translator = ctranslate2.Translator("ctranslate2/")
 translated = translator.translate_batch([tokenized[0]])
-tokenizer.detokenize(translated[0][0]['tokens'])
+print(tokenizer.detokenize(translated[0][0]['tokens']))
 Hola món!
 ```
