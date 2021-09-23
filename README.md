@@ -24,7 +24,7 @@ Language pair | Model BLEU | Flores101 BLEU |Sentences| Download model
 
 Legend:
 * *Model BLEU* colum indicates the models' BLEU score against the corpus test dataset (from train/dev/test)
-* *Flores101 BLEU* colum indicates the models' BLEU score the [Flores101 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
+* *Flores101 BLEU* colum indicates the models' BLEU score against [Flores101 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
 * *Sentences* Number of sentences in the corpus used for training
 
 # Using the models
