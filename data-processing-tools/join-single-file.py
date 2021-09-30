@@ -6,6 +6,8 @@
 
 import yaml
 import os
+import datetime
+import unicodedata
 
 def file_len(fname):
     with open(fname) as f:
@@ -13,18 +15,22 @@ def file_len(fname):
             pass
     return i + 1
 
+def _normalize_string_src(result):
 
-def _clean_localized(result):
     original = result
+    result = unicodedata.normalize('NFC', result)
+
+    cleaned = original != result
+    return result, cleaned
+
+def _normalize_string_trg(result):
+
+    original = result
+    result = unicodedata.normalize('NFC', result)
+
     mapping = {
                 '’' : '\'',
-                'à' : 'à',
-                'í' : 'í',
-                'ó' : 'ó',
-                'è' : 'è',
-                'ò' : 'ò',
-                'ú' : 'ú',
-              }
+    }
 
     for char in mapping.keys():
         result = result.replace(char, mapping[char])
@@ -130,7 +136,7 @@ def split_in_six_files(src_filename, tgt_filename):
         print("validation_each {0}".format(validation_each))
         print("test_each {0}".format(test_each))
 
-        clean = 0
+        clean_src = clean_trg = 0
         while True:
 
             src = read_source.readline()
@@ -143,9 +149,11 @@ def split_in_six_files(src_filename, tgt_filename):
                 bad_length = bad_length + 1
                 continue
 
-            src, cleaned = _convert_newlines(src)
-            trg, cleaned = _convert_newlines(trg)
-            trg, cleaned = _clean_localized(trg)
+            src, _ = _convert_newlines(src)
+            trg, _ = _convert_newlines(trg)
+
+            src, cleaned_src = _normalize_string_src(src)
+            trg, cleaned_trg = _normalize_string_trg(trg)
 
             pair = src + trg
             if pair in pairs:
@@ -154,8 +162,11 @@ def split_in_six_files(src_filename, tgt_filename):
             else:
                 pairs.add(pair)
 
-            if cleaned:
-                clean = clean + 1
+            if cleaned_src:
+                clean_src = clean_src + 1
+
+            if cleaned_trg:
+                clean_trg = clean_trg + 1
 
             if strings % validation_each == 0:
                 source = source_val
@@ -180,18 +191,22 @@ def split_in_six_files(src_filename, tgt_filename):
 
     pduplicated = duplicated * 100 / strings
     pdots = dots * 100 / strings
-    pclean = clean * 100 / strings
+    pclean_src = clean_src * 100 / strings
+    pclean_trg = clean_trg * 100 / strings
     pbad_length = bad_length * 100 / strings
     print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
-    print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
+    print(f"Cleaned acute accents. src: {clean_src} ({pclean_src:.2f}%), tgt: {clean_trg} ({pclean_trg:.2f}%)")
     print(f"Empty sentences or diff len too long: {bad_length} ({pbad_length:.2f}%)")
     print(f"Dots: {dots} ({pdots:.2f}%)")
 
-def append_lines_from_file(src_filename, trg_file):
+def append_lines_from_file(src_filename, trg_file, max_lines):
     lines = 0
     with open(src_filename, 'r') as tf:
         line = tf.readline()
         while line:
+            if max_lines and lines >= max_lines:
+                break
+
             lines += 1
             trg_file.write(line)
             line = tf.readline()
@@ -206,12 +221,16 @@ def read_configuration():
 
     sources = content['source_files']
     targets = content['target_files']
+    max_lines = content.get('max_lines')
+
+    if max_lines:
+        print(f"max_lines: {max_lines}")
 
     if len(sources) != len(targets):
         print("Different number of sources and targets")
         exit()
 
-    return sources, targets
+    return sources, targets, max_lines
     
 
 def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
@@ -219,7 +238,7 @@ def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
     src_lines = 0
     trg_lines = 0
 
-    sources, targets = read_configuration()
+    sources, targets, max_lines = read_configuration()
 
     print("Join multiple files in two src and tgt files")
     with open(src_filename, "w") as tf_source,\
@@ -227,11 +246,11 @@ def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
 
         print("**Sources")
         for source in sources:
-            src_lines += append_lines_from_file(source, tf_source)
+            src_lines += append_lines_from_file(source, tf_source, max_lines)
 
         print("**Targets")
         for target in targets:
-            trg_lines += append_lines_from_file(target, tf_target)
+            trg_lines += append_lines_from_file(target, tf_target, max_lines)
 
     print("src lines: " + str(src_lines))
     print("trg lines: " + str(trg_lines))
@@ -242,6 +261,7 @@ def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
 def main():
 
     print("Joins several corpus and creates a final train, validation and test dataset")
+    start_time = datetime.datetime.now()
 
     single_src = 'src.txt'
     single_tgt = 'tgt.txt'
@@ -249,6 +269,8 @@ def main():
     split_in_six_files(single_src, single_tgt)
     os.remove(single_src)
     os.remove(single_tgt)
+    s = 'Time used: {0}'.format(datetime.datetime.now() - start_time)
+    print(s)
 
 if __name__ == "__main__":
     main()

@@ -1,31 +1,37 @@
 # Introduction
 
-This repository contains the scripts to train neuronal translation models for OpenNMT and also the published models.
+This repository contains the scripts to train neuronal translation models for [OpenNMT](https://opennmt.net/) and also the Softcatalà published models.
 
-For more information about training see the [TRAINING](TRAINING.md) document
+For more information about training see the [TRAINING](TRAINING.md) document.
+
+The corpus used to train this models are available here: https://github.com/Softcatala/parallel-catalan-corpus/
 
 # Models
 
-Language pair | Model BLEU | Flores101 BLEU |Sentences| Download model
-|---|---|---|---|---
-|German-Catalan | 32.31 |20.67 | 5376403 | [deu-cat-2021-09-04-1630760056.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/deu-cat-2021-09-04-1630760056.zip)
-|Catalan-German | 25.37 |17.31 | 5376403 | [cat-deu-2021-09-07-1630976658.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-deu-2021-09-07-1630976658.zip)
-|English-Catalan | 41.03 |36.06 | 4459276 | [eng-cat-2021-09-04-1630790361.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/eng-cat-2021-09-04-1630790361.zip)
-|Catalan-English | 42.33 |36.13 | 0 | [cat-eng-2021-09-05-1630856013.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-eng-2021-09-05-1630856013.zip)
-|French-Catalan | 35.92 |26.95 | 2223070 | [fra-cat-2021-09-04-1630729544.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/fra-cat-2021-09-04-1630729544.zip)
-|Catalan-French | 35.93 |29.65 | 0 | [cat-fra-2021-09-05-1630884602.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-fra-2021-09-05-1630884602.zip)
-|Italian-Catalan | 35.75 |22.09 | 2563642 | [ita-cat-2021-09-03-1630696965.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/ita-cat-2021-09-03-1630696965.zip)
-|Catalan-Italian | 32.37 |15.31 | 2563642 | [cat-ita-2021-09-06-1630941629.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-ita-2021-09-06-1630941629.zip)
-|Dutch-Catalan | 28.04 |15.79 | 1838820 | [nld-cat-2021-09-07-1631023781.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/nld-cat-2021-09-07-1631023781.zip)
-|Catalan-Dutch | 26.00 |14.89 | 1838820 | [cat-nld-2021-09-07-1631052167.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-nld-2021-09-07-1631052167.zip)
-|Portuguese-Catalan | 38.13 |28.45 | 2037197 | [por-cat-2021-09-17-1631856236.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/por-cat-2021-09-17-1631856236.zip)
-|Spanish-Catalan | 91.27 |18.09 | 6545128 | [spa-cat-2021-09-03-1630697264.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/spa-cat-2021-09-03-1630697264.zip)
-|Catalan-Spanish | 89.70 |14.10 | 6545128 | [cat-spa-2021-09-06-1630913216.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/cat-spa-2021-09-06-1630913216.zip)
+Language pair | Model BLEU | Flores101 BLEU | Opus-MT BLEU | Sentences | Download model
+|---|---|---|---|---|---
+|German-Catalan | 37.3 |24.6 |18.50 | 5376400 | [deu-cat-2021-09-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/deu-cat-2021-09-27.zip)
+|Catalan-German | 30.6 |21.6 |15.80 | 5376400 | [cat-deu-2021-09-30.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-deu-2021-09-30.zip)
+|English-Catalan | 45.1 |40.4 |29.80 | 4459276 | [eng-cat-2021-09-26.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/eng-cat-2021-09-26.zip)
+|Catalan-English | 46.9 |41.2 |29.60 | 4459276 | [cat-eng-2021-09-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-eng-2021-09-29.zip)
+|French-Catalan | 42.2 |31.7 |27.20 | 2555707 | [fra-cat-2021-09-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/fra-cat-2021-09-24.zip)
+|Catalan-French | 42.3 |34.6 |27.90 | 2555707 | [cat-fra-2021-09-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-fra-2021-09-28.zip)
+|Italian-Catalan | 40.9 |26.7 |22.00 | 2563550 | [ita-cat-2021-09-23.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/ita-cat-2021-09-23.zip)
+|Catalan-Italian | 37.9 |24.1 |19.20 | 2563550 | [cat-ita-2021-09-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-ita-2021-09-27.zip)
+|Dutch-Catalan | 32.0 |19.0 |15.80 | 1838820 | [nld-cat-2021-09-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/nld-cat-2021-09-27.zip)
+|Catalan-Dutch | 28.8 |17.6 |13.40 | 1838820 | [cat-nld-2021-09-30.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-nld-2021-09-30.zip)
+|Portuguese-Catalan | 42.2 |32.6 |28.10 | 2037197 | [por-cat-2021-09-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/por-cat-2021-09-25.zip)
+|Catalan-Portuguese | 39.3 |31.6 |27.50 | 2037197 | [cat-por-2021-09-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-por-2021-09-29.zip)
+|Spanish-Catalan | 89.4 |22.7 |22.50 | 10278209 | [spa-cat-2021-09-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/spa-cat-2021-09-25.zip)
+|Catalan-Spanish | 88.5 |23.8 |23.20 | 10278209 | [cat-spa-2021-09-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-spa-2021-09-28.zip)
 
 Legend:
 * *Model BLEU* colum indicates the models' BLEU score against the corpus test dataset (from train/dev/test)
 * *Flores101 BLEU* colum indicates the models' BLEU score against [Flores101 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
+* *Opus-MT BLEU* is the BLUE score of the [Opus-MT models](https://github.com/Helsinki-NLP/Opus-MT) using the Flores101 benchmark (our ambition is to outperform them)
 * *Sentences* Number of sentences in the corpus used for training
+
+We use [Sacrebleu](https://github.com/mjpost/sacrebleu) to calculate BLUE scores.
 
 # Using the models
 

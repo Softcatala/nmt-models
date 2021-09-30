@@ -12,7 +12,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 
 
-URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/beta/'
+URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/'
 EXT = 'zip'
 
 def get_list_of_models(url, ext=''):
@@ -55,19 +55,42 @@ def get_bleu_scores():
 
     try:
         filename = "metadata/model_description.txt"
-        BLEU_REGEX = "BLEU = ([0-9\.]*)"
+        BLEU_REGEX_SACRE = "BLEU([^=]*)=[ ]([0-9\.]*)"
         with open(filename) as f:
             lines = f.readlines()
-            m = re.match(BLEU_REGEX, lines[2])
-            bleu_model = m[1]
 
-            m = re.match(BLEU_REGEX, lines[4])
-            bleu_flores = m[1]
+            m = re.match(BLEU_REGEX_SACRE, lines[3])
+            bleu_model = m[2]
+
+            m = re.match(BLEU_REGEX_SACRE, lines[6])
+            bleu_flores = m[2]
 
             return bleu_model, bleu_flores
 
     except:
         return bleu_model, bleu_flores
+
+def get_opus_mt(language_pair):
+
+    languages = {
+        'fra-cat' : '27.20',
+        'cat-fra' : '27.90',
+        'spa-cat' : '22.50',
+        'cat-spa' : '23.20',
+        'ita-cat' : '22.00',
+        'cat-ita' : '19.20',
+        'nld-cat' : '15.80',
+        'cat-nld' : '13.40',
+        'eng-cat' : '29.80',
+        'cat-eng' : '29.60',
+        'deu-cat' : '18.50',
+        'cat-deu' : '15.80',
+        'por-cat' : '28.10',
+        'cat-por' : '27.50'
+    }
+
+    bleu = languages[language_pair]
+    return bleu
 
 def convert_iso_639_3_to_string(language_pair):
     languages = {
@@ -130,8 +153,8 @@ def main():
     DIR = "tmp/"
 
     with open("table.md", "w") as table:
-        table.write("Language pair | Model BLEU | Flores101 BLEU |Sentences| Download model\n")
-        table.write("|---|---|---|---|---\n")
+        table.write("Language pair | Model BLEU | Flores101 BLEU | Opus-MT BLEU | Sentences | Download model\n")
+        table.write("|---|---|---|---|---|---\n")
         models = get_list_of_models(URL, EXT)
         models = get_sorted_models(models)
         for url in models:
@@ -160,9 +183,11 @@ def main():
             bleu_model, bleu_flores = get_bleu_scores()
             print(f"bleu model '{bleu_model}'")
             print(f"bleu flores '{bleu_flores}'")
+            opus_mt = get_opus_mt((language_pair))
+            print(f"opus mt '{opus_mt}'")
             
             filename = get_filename(url)
-            table.write(f"|{language_names} | {bleu_model} |{bleu_flores} | {segments} | [{filename}]({url})\n")
+            table.write(f"|{language_names} | {bleu_model} |{bleu_flores} |{opus_mt} | {segments} | [{filename}]({url})\n")
 
 if __name__ == "__main__":
     main()

@@ -18,6 +18,6 @@ onmt-main --config data.yml --auto_config infer --features_file flores101.$srcLa
 perl ../multi-bleu.perl flores101.$tgtLanguage.token < predictions.txt.token
 python3 ../sentencepiece-bleu.py
 perl ../multi-bleu.perl flores101.$tgtLanguage < predictions.txt >> bleu.txt
-sacrebleu tgt-test.txt -i predictions.txt -m bleu >> bleu.txt
+sacrebleu flores101.$tgtLanguage -i predictions.txt -m bleu >> bleu.txt
 
 cat bleu.txt

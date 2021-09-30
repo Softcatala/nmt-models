@@ -12,7 +12,7 @@ onmt-main --config data.yml --auto_config export --export_dir exported/tensorflo
 echo "Model description: $modelName" >> $modelDescription
 cat bleu.txt >>  $modelDescription
 echo "Date: $currentDate" >> $modelDescription
-python3 ../stack-versions.py >> $modelDescription
+python3 ../../install-scripts/stack-versions.py >> $modelDescription
 wc src-train.txt -l > exported/metadata/inputs_used.txt
 ls *.txt -l >> exported/metadata/inputs_used.txt
 cp *.model exported/tokenizer/
