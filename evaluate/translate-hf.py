@@ -100,7 +100,7 @@ def main():
                     t = str(t[0])
                     target.write(t + "\n")
 
-        reference_file = f"input/flores101.{target_language}"
+        reference_file = f"flores101.{target_language}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
         print(f"'{source_language}-{target_language}' : '{sacrebleu:0.2f}',")
 
