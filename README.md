@@ -6,6 +6,8 @@ For more information about training see the [TRAINING](TRAINING.md) document.
 
 The corpus used to train these models are available here: https://github.com/Softcatala/parallel-catalan-corpus/
 
+And here the tools that at Softcatalà to serve these models in production: https://github.com/Softcatala/nmt-softcatala
+
 # Models
 
 Language pair | Model BLEU | Flores101 BLEU | Opus-MT BLEU | Sentences | Download model
@@ -31,7 +33,17 @@ Legend:
 * *Opus-MT BLEU* is the BLUE score of the [Opus-MT models](https://github.com/Helsinki-NLP/Opus-MT) using the Flores101 benchmark (our ambition is to outperform them)
 * *Sentences* Number of sentences in the corpus used for training
 
-We use [Sacrebleu](https://github.com/mjpost/sacrebleu) to calculate BLUE scores.
+All models are based on TransformerRelative and SentencePiece has been used as tokenizer. We use [Sacrebleu](https://github.com/mjpost/sacrebleu) to calculate BLUE scores.
+
+
+## Structure of the models
+
+Description of the directories on the contained in the models zip file:
+
+* *tensorflow*: model exported in Tensorflow format
+* *ctranslate2*: model exported in CTranslate2 format (used for inference)
+* *metadata*: description of the model
+* *tokenizer*: SentencePiece models for both languages
 
 # Using the models
 
