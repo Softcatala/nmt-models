@@ -4,7 +4,7 @@ This repository contains the scripts to train neuronal translation models for [O
 
 For more information about training see the [TRAINING](TRAINING.md) document.
 
-The corpus used to train this models are available here: https://github.com/Softcatala/parallel-catalan-corpus/
+The corpus used to train these models are available here: https://github.com/Softcatala/parallel-catalan-corpus/
 
 # Models
 
@@ -26,8 +26,8 @@ Language pair | Model BLEU | Flores101 BLEU | Opus-MT BLEU | Sentences | Downloa
 |Catalan-Spanish | 88.5 |23.8 |23.20 | 10278209 | [cat-spa-2021-09-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/cat-spa-2021-09-28.zip)
 
 Legend:
-* *Model BLEU* colum indicates the models' BLEU score against the corpus test dataset (from train/dev/test)
-* *Flores101 BLEU* colum indicates the models' BLEU score against [Flores101 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
+* *Model BLEU* column indicates the models' BLEU score against the corpus test dataset (from train/dev/test)
+* *Flores101 BLEU* column indicates the models' BLEU score against [Flores101 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
 * *Opus-MT BLEU* is the BLUE score of the [Opus-MT models](https://github.com/Helsinki-NLP/Opus-MT) using the Flores101 benchmark (our ambition is to outperform them)
 * *Sentences* Number of sentences in the corpus used for training
 
@@ -66,7 +66,6 @@ Simple tokenization & translation using Python:
 import pyonmttok
 tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = "tokenizer/sp_m.model")
 tokenized=tokenizer.tokenize("Hello world!")
-print(tokenized)
 
 import ctranslate2
 translator = ctranslate2.Translator("ctranslate2/")
