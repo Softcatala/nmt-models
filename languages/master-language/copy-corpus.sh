@@ -6,7 +6,7 @@ tgtLanguage=${BASH_REMATCH[2]}
 
 src=$tgtLanguage-$srcLanguage
 
-# Copy from eng-cat and invert order
+# Copy from xxx-cat and invert order for cat-xxx
 cp ../$src/src-train.txt.token tgt-train.txt.token
 cp ../$src/src-val.txt.token tgt-val.txt.token
 cp ../$src/src-test.txt.token tgt-test.txt.token
