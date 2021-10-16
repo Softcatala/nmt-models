@@ -5,7 +5,7 @@ srcLanguage=${BASH_REMATCH[1]}
 tgtLanguage=${BASH_REMATCH[2]}
 tgtModelName=$tgtLanguage"-"$srcLanguage
 
-echo "Souce model name:" $srcModelName
+echo "Source model name:" $srcModelName
 echo "Target model name:" $tgtModelName
 
 # Generate final src-val-test single files

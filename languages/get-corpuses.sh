@@ -2,7 +2,6 @@
 
 git clone https://github.com/Softcatala/parallel-catalan-corpus corpus-raw
 cd corpus-raw
-git checkout models-15sep
 
 declare -a arr=("eng-cat" "deu-cat" "ita-cat" "fra-cat" "spa-cat" "nld-cat" "por-cat")
 
