@@ -99,6 +99,7 @@ def _is_sentence_len_good(src, trg):
 
     return True
 
+# https://arxiv.org/abs/1907.01279 contains an overview of some of the techniques used here
 def split_in_six_files(src_filename, tgt_filename):
 
     pairs = set()
@@ -137,6 +138,7 @@ def split_in_six_files(src_filename, tgt_filename):
         print("test_each {0}".format(test_each))
 
         clean_src = clean_trg = 0
+        equal = 0
         while True:
 
             src = read_source.readline()
@@ -154,6 +156,10 @@ def split_in_six_files(src_filename, tgt_filename):
 
             src, cleaned_src = _normalize_string_src(src)
             trg, cleaned_trg = _normalize_string_trg(trg)
+
+            if src == trg and len(src) > 50 and len(trg) > 50:
+                equal += 1
+                continue
 
             pair = src + trg
             if pair in pairs:
@@ -194,10 +200,11 @@ def split_in_six_files(src_filename, tgt_filename):
     pclean_src = clean_src * 100 / strings
     pclean_trg = clean_trg * 100 / strings
     pbad_length = bad_length * 100 / strings
+    pequal = equal * 100 / strings
     print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
     print(f"Cleaned acute accents. src: {clean_src} ({pclean_src:.2f}%), tgt: {clean_trg} ({pclean_trg:.2f}%)")
     print(f"Empty sentences or diff len too long: {bad_length} ({pbad_length:.2f}%)")
-    print(f"Dots: {dots} ({pdots:.2f}%)")
+    print(f"Dots: {dots} ({pdots:.2f}%), equal: {equal} ({pequal:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file, max_lines):
     lines = 0
