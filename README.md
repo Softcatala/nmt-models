@@ -59,6 +59,10 @@ wget https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/eng-cat-2
 unzip eng-cat-2021-09-04-1630790361.zip
 ```
 
+Install dependencies:
+
+```pip3 install ctranslate2 pyonmttok```
+
 Simple translation using Python:
 
 ```python
