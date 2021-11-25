@@ -20,6 +20,7 @@
 
 import os
 from transformers import MarianMTModel, MarianTokenizer
+import datetime
 import json
 
 def file_len(fname):
@@ -85,6 +86,7 @@ def main():
 #        print(f"hypo {hypotesis_file}")
 #        print(f"input_file {input_file}")
 
+        start_time = datetime.datetime.now()
         LINES_IN_DATA_SET = 1012
         if file_len(hypotesis_file) != LINES_IN_DATA_SET:
             with open(input_file, "r") as source, open(hypotesis_file, "w") as target:
@@ -103,6 +105,8 @@ def main():
         reference_file = f"flores101.{target_language}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
         print(f"'{source_language}-{target_language}' : '{sacrebleu:0.2f}',")
+    s = 'Time used: {0}'.format(datetime.datetime.now() - start_time)
+    print(s)
 
 if __name__ == "__main__":
     main()
