@@ -79,6 +79,8 @@ class TestJoinSingleFile(unittest.TestCase):
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola?"))
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola!"))
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola…"))
+        self.assertTrue(join_single_file._has_dot_or_equivalent("Hola:"))
+        self.assertTrue(join_single_file._has_dot_or_equivalent("Hola,"))
 
     def test_has_dot_or_equivalent_false(self):
         self.assertFalse(join_single_file._has_dot_or_equivalent("num1"))

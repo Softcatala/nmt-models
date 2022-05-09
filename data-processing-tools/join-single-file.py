@@ -54,7 +54,7 @@ def _remove_special_newlines(result):
 def _has_dot_or_equivalent(text):
     t = text
 
-    if t[-1:]== '.' or t[-1:] == '…' or t[-1:] == '?' or t[-1:] == '!':
+    if t[-1:]== '.' or t[-1:] == '…' or t[-1:] == '?' or t[-1:] == '!' or t[-1:] == ',' or t[-1:] == ':':
         return True
 
     if t[-2:] == '.)' or t[-2:] == '."' or t[-2:] == '.\'':
