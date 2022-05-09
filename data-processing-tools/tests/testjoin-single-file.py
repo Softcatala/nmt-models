@@ -53,6 +53,27 @@ class TestJoinSingleFile(unittest.TestCase):
         self.assertEquals("Yes.", src)
         self.assertEquals("No.", trg)
 
+    def test_process_dot_src_newline(self):
+        src = "Yes.\n"
+        trg = "No\n"
+        cnt = 0
+        src, trg, cnt = join_single_file._process_dot(src, trg, cnt)
+
+        self.assertEquals(1, cnt)
+        self.assertEquals("Yes.\n", src)
+        self.assertEquals("No.\n", trg)
+
+    def test_process_dot_trg_newline(self):
+        src = "Yes\n"
+        trg = "No.\n"
+        cnt = 0
+        src, trg, cnt = join_single_file._process_dot(src, trg, cnt)
+
+        self.assertEquals(1, cnt)
+        self.assertEquals("Yes.\n", src)
+        self.assertEquals("No.\n", trg)
+
+
     def test_has_dot_or_equivalent_true(self):
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola."))
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola?"))

@@ -62,17 +62,20 @@ def _has_dot_or_equivalent(text):
 
     return False
 
+def _add_punctuation_at_the_end(text, char):
+    pos = len(text) - (len(text) - len(text.rstrip()))
+    new = text[:pos] + char + text[pos:]
+    return new
+
 def _process_dot(src, trg, dots):
     s = src.rstrip()
     t = trg.rstrip()
 
     if s[-1:] == '.' and _has_dot_or_equivalent(t) is False:
-        src = src.rstrip()
-        trg = trg.rstrip() + "."
+        trg = _add_punctuation_at_the_end(trg, ".")
         dots = dots + 1
     elif t[-1:] == '.' and _has_dot_or_equivalent(s) is False:
-        trg = trg.rstrip()
-        src = src.rstrip() + "."
+        src = _add_punctuation_at_the_end(src, ".")
         dots = dots + 1
 
     return src, trg, dots
