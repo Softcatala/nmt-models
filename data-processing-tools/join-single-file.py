@@ -38,7 +38,7 @@ def _normalize_string_trg(result):
     cleaned = original != result
     return result, cleaned
 
-def _convert_newlines(result):
+def _remove_special_newlines(result):
     original = result
     mapping = {
                 u"\u2028" : '',
@@ -151,8 +151,8 @@ def split_in_six_files(src_filename, tgt_filename):
                 bad_length = bad_length + 1
                 continue
 
-            src, _ = _convert_newlines(src)
-            trg, _ = _convert_newlines(trg)
+            src, _ = _remove_special_newlines(src)
+            trg, _ = _remove_special_newlines(trg)
 
             src, cleaned_src = _normalize_string_src(src)
             trg, cleaned_trg = _normalize_string_trg(trg)
