@@ -41,7 +41,11 @@ def get_sacrebleu(reference_file, hypotesis_file):
     with open(JSON_FILE) as f:
         data = json.load(f)
 
-    return data['score']
+    return f"{data['score']:0.2f}"
+
+def save_json(scores):
+	with open("openmt-bleu.json", "w") as outfile:
+		json.dump(scores, outfile, indent=4)
 
 
 def main():
@@ -70,6 +74,7 @@ def main():
         "ca-pt" : ["cat", "por"],
     }
 
+    blue_scores = {}
     for pair_language in pair_languages:
         source_language = pair_languages[pair_language][0]
         target_language = pair_languages[pair_language][1]
@@ -80,7 +85,7 @@ def main():
         tokenizer = MarianTokenizer.from_pretrained(model_name)
         model = MarianMTModel.from_pretrained(model_name)
 
-        hypotesis_file = f"translated/flores101-{pair_language}.{target_language}"
+        hypotesis_file = f"opusmt/flores101-{pair_language}.{target_language}"
         input_file = f"flores101.{source_language}"
 
 #        print(f"hypo {hypotesis_file}")
@@ -104,7 +109,9 @@ def main():
 
         reference_file = f"flores101.{target_language}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
-        print(f"'{source_language}-{target_language}' : '{sacrebleu:0.2f}',")
+        blue_scores[f'{source_language}-{target_language}'] = sacrebleu
+        print(f"'{source_language}-{target_language}', BLEU: '{sacrebleu}'")
+    save_json(blue_scores)
     s = 'Time used: {0}'.format(datetime.datetime.now() - start_time)
     print(s)
 

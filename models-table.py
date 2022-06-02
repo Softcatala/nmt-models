@@ -8,6 +8,7 @@ import requests
 import os
 import shutil
 import re
+import json
 from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 
@@ -70,26 +71,16 @@ def get_bleu_scores():
     except:
         return bleu_model, bleu_flores
 
+def load_mt_scores():
+
+    with open('evaluate/openmt-bleu.json', 'r') as openfile:
+        return json.load(openfile)
+
+opus_mt_scores = load_mt_scores()
+
 def get_opus_mt(language_pair):
 
-    languages = {
-        'fra-cat' : '27.20',
-        'cat-fra' : '27.90',
-        'spa-cat' : '22.50',
-        'cat-spa' : '23.20',
-        'ita-cat' : '22.00',
-        'cat-ita' : '19.20',
-        'nld-cat' : '15.80',
-        'cat-nld' : '13.40',
-        'eng-cat' : '29.80',
-        'cat-eng' : '29.60',
-        'deu-cat' : '18.50',
-        'cat-deu' : '15.80',
-        'por-cat' : '28.10',
-        'cat-por' : '27.50'
-    }
-
-    bleu = languages[language_pair]
+    bleu = opus_mt_scores[language_pair]
     return bleu
 
 def convert_iso_639_3_to_string(language_pair):
