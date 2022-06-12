@@ -44,7 +44,7 @@ def get_sacrebleu(reference_file, hypotesis_file):
     return f"{data['score']:0.2f}"
 
 def save_json(scores):
-	with open("openmt-bleu.json", "w") as outfile:
+	with open("opusmt-bleu.json", "w") as outfile:
 		json.dump(scores, outfile, indent=4)
 
 
@@ -85,7 +85,7 @@ def main():
         tokenizer = MarianTokenizer.from_pretrained(model_name)
         model = MarianMTModel.from_pretrained(model_name)
 
-        hypotesis_file = f"opusmt/flores101-{pair_language}.{target_language}"
+        hypotesis_file = f"opusmt/flores101-{source_language}-{target_language}.{target_language}"
         input_file = f"flores101.{source_language}"
 
 #        print(f"hypo {hypotesis_file}")

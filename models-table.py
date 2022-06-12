@@ -73,7 +73,7 @@ def get_bleu_scores():
 
 def load_mt_scores():
 
-    with open('evaluate/openmt-bleu.json', 'r') as openfile:
+    with open('evaluate/opusmt-bleu.json', 'r') as openfile:
         return json.load(openfile)
 
 opus_mt_scores = load_mt_scores()
