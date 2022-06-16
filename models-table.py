@@ -71,16 +71,22 @@ def get_bleu_scores():
     except:
         return bleu_model, bleu_flores
 
-def load_mt_scores():
+def load_mt_scores(filename):
 
-    with open('evaluate/opusmt-bleu.json', 'r') as openfile:
+    with open(filename, 'r') as openfile:
         return json.load(openfile)
 
-opus_mt_scores = load_mt_scores()
+opus_mt_scores = load_mt_scores('evaluate/opusmt-bleu.json')
+google_scores = load_mt_scores('evaluate/google-bleu.json')
 
 def get_opus_mt(language_pair):
 
     bleu = opus_mt_scores[language_pair]
+    return bleu
+
+def get_google(language_pair):
+
+    bleu = google_scores[language_pair]
     return bleu
 
 def convert_iso_639_3_to_string(language_pair):
@@ -144,8 +150,8 @@ def main():
     DIR = "tmp/"
 
     with open("table.md", "w") as table:
-        table.write("Language pair | Model BLEU | Flores101 BLEU | Opus-MT BLEU | Sentences | Download model\n")
-        table.write("|---|---|---|---|---|---\n")
+        table.write("Language pair | Model BLEU | Flores101 BLEU | Google BLEU | Opus-MT BLEU | Sentences | Download model\n")
+        table.write("|---|---|---|---|---|---|---\n")
         models = get_list_of_models(URL, EXT)
         models = get_sorted_models(models)
         for url in models:
@@ -177,8 +183,10 @@ def main():
             opus_mt = get_opus_mt((language_pair))
             print(f"opus mt '{opus_mt}'")
             
+            google = get_google((language_pair))
+            print(f"Google '{google}'")
             filename = get_filename(url)
-            table.write(f"|{language_names} | {bleu_model} |{bleu_flores} |{opus_mt} | {segments} | [{filename}]({url})\n")
+            table.write(f"|{language_names} | {bleu_model} |{bleu_flores} |{google} |{opus_mt}| {segments} | [{filename}]({url})\n")
 
 if __name__ == "__main__":
     main()
