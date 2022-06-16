@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 
 
-URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2021-09-30/'
+URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/'
 EXT = 'zip'
 
 def get_list_of_models(url, ext=''):
