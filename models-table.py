@@ -143,50 +143,60 @@ def get_sorted_models(urls):
 
     return new_list
 
-def main():
-    print("Builds a table with available models")
-
+def get_metrics_from_model_zipfile(url):
     ZIP_FILE = "model.zip"
     DIR = "tmp/"
 
-    with open("table.md", "w") as table:
-        table.write("Language pair | Model BLEU | Flores101 BLEU | Google BLEU | Opus-MT BLEU | Sentences | Download model\n")
-        table.write("|---|---|---|---|---|---|---\n")
+    if os.path.isdir(DIR):
+        shutil.rmtree(DIR)
+
+    os.mkdir(DIR)
+    os.chdir(DIR)
+
+    download_file(url, ZIP_FILE)
+
+    cmd = 'unzip {0} > /dev/null'.format(ZIP_FILE)
+    os.system(cmd)
+
+    segments = get_segments()
+    if segments > 0:
+        segments = (int) (segments / 2) # Segments are duplicated upper case, lower case
+
+    bleu_model, bleu_flores = get_bleu_scores()
+
+    return segments, bleu_model, bleu_flores
+
+def main():
+    print("Builds a table with available models")
+
+    with open("table.md", "w") as table_md, open("table.csv", "w") as table_cvs:
+        head = "Language pair | Model BLEU | Flores101 BLEU | Google BLEU | Opus-MT BLEU | Sentences | Download model"
+        table_md.write(f"{head}\n")
+        table_cvs.write("{0}\n".format(head.replace("|",",")))
+        table_md.write("|---|---|---|---|---|---|---\n")
         models = get_list_of_models(URL, EXT)
         models = get_sorted_models(models)
         for url in models:
-            
-            if os.path.isdir(DIR):
-                shutil.rmtree(DIR)
-
-            os.mkdir(DIR)
-            os.chdir(DIR)
-
-            download_file(url, ZIP_FILE)
-
-            cmd = 'unzip {0} > /dev/null'.format(ZIP_FILE)
-            os.system(cmd)
-            
+                         
             language_pair = get_language_pair(url)
+            segments, bleu_model, bleu_flores = get_metrics_from_model_zipfile(url)
             language_names = convert_iso_639_3_to_string(language_pair)
             print("")
             print(f"model '{url}'")
             print(f"language pair '{language_pair}' ('{language_names}')")
-            segments = get_segments()
-            if segments > 0:
-                segments = (int) (segments / 2) # Segments are duplicated upper case, lower case
- 
             print(f"segments '{segments}'")
-            bleu_model, bleu_flores = get_bleu_scores()
             print(f"bleu model '{bleu_model}'")
             print(f"bleu flores '{bleu_flores}'")
+            
             opus_mt = get_opus_mt((language_pair))
             print(f"opus mt '{opus_mt}'")
             
             google = get_google((language_pair))
             print(f"Google '{google}'")
             filename = get_filename(url)
-            table.write(f"|{language_names} | {bleu_model} |{bleu_flores} |{google} |{opus_mt}| {segments} | [{filename}]({url})\n")
+            entry = f"{language_names} | {bleu_model} |{bleu_flores} |{google} |{opus_mt}| {segments} | [{filename}]({url})"
+            table_md.write(f"|{entry}\n")
+            table_cvs.write("{0}\n".format(entry.replace("|",",")))
 
 if __name__ == "__main__":
     main()
