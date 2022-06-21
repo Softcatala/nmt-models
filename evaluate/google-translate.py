@@ -44,7 +44,7 @@ def get_sacrebleu(reference_file, hypotesis_file):
     with open(JSON_FILE) as f:
         data = json.load(f)
 
-    return f"{data['score']:0.2f}"
+    return f"{data['score']:0.1f}"
 
 def save_json(scores):
 	with open("google-bleu.json", "w") as outfile:
@@ -117,7 +117,7 @@ def read_parameters():
 
 
 def main():
-    print("Translates Flores101 datasets using HuggingFace opus-mt models")
+    print("Translates Flores101 datasets using Google Translate")
     
     
     api_key = read_parameters()
