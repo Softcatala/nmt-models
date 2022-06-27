@@ -17,9 +17,14 @@ cp src-val.txt corpus/$srcModelName/src-val.txt
 cp src-test.txt corpus/$srcModelName/src-test.txt
 
 # Migrate target language to new grammar rules
-python3 ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-train.txt corpus/$srcModelName/tgt-train.txt
-python3 ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-val.txt corpus/$srcModelName/tgt-val.txt
-python3 ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-test.txt corpus/$srcModelName/tgt-test.txt
+#python3 ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-train.txt corpus/$srcModelName/tgt-train.txt
+#python3 ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-val.txt corpus/$srcModelName/tgt-val.txt
+#python3 ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-test.txt corpus/$srcModelName/tgt-test.txt
+
+cp ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-train.txt corpus/$srcModelName/tgt-train.txt
+cp  ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-val.txt corpus/$srcModelName/tgt-val.txt
+cp ../../data-processing-tools/MTUOC-novaIEC/modificaIEC.py tgt-test.txt corpus/$srcModelName/tgt-test.txt
+
 cp tgt-train.txt corpus/$srcModelName/tgt-train.txt
 cp tgt-val.txt corpus/$srcModelName/tgt-val.txt
 cp tgt-test.txt corpus/$srcModelName/tgt-test.txt
