@@ -34,7 +34,9 @@ mv tgt-train.txt corpus/$tgtModelName/src-train.txt
 mv tgt-val.txt corpus/$tgtModelName/src-val.txt
 mv tgt-test.txt corpus/$tgtModelName/src-test.txt
 
-# Copy flores dataset
+# Copy datasets for evaluation
+cp corpus/$srcModelName/tgt-test.txt .
+cp corpus/$srcModelName/src-test.txt .
 cp ../../evaluate/flores101.$srcLanguage .
 cp ../../evaluate/flores101.$tgtLanguage .
 

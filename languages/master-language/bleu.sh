@@ -4,20 +4,27 @@ regex='([a-z]{3})-([a-z]{3})'
 srcLanguage=${BASH_REMATCH[1]}
 tgtLanguage=${BASH_REMATCH[2]}
 
-# test data set
-echo "Test data set" > bleu.txt
-onmt-main --config data.yml --auto_config infer --features_file src-test.txt.token > predictions.txt.token
-perl ../multi-bleu.perl tgt-test.txt.token < predictions.txt.token 
-python3 ../sentencepiece-bleu.py
-perl ../multi-bleu.perl tgt-test.txt < predictions.txt >> bleu.txt
-sacrebleu tgt-test.txt -i predictions.txt -m bleu >> bleu.txt
+if [ ! -f model-to-txt.py ]
+then
+    echo "Downloading model-to-txt"
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/requirements.txt
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/model-to-txt.py
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/segment.srx
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/srx_segmenter.py
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/texttokenizer.py
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/ctranslate.py
+    wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/preservemarkup.py
+fi
 
-# flores data set
+modelRootDir=exported/
+echo "Test data set" > bleu.txt
+python3 model-to-txt.py -m $srcModelName -f src-test.txt -t predictions-test.txt -x $modelRootDir
+sacrebleu tgt-test.txt -i predictions-test.txt -m bleu >> bleu.txt
+
 echo "Flores data set" >> bleu.txt
-onmt-main --config data.yml --auto_config infer --features_file flores101.$srcLanguage.token > predictions.txt.token
-perl ../multi-bleu.perl flores101.$tgtLanguage.token < predictions.txt.token
-python3 ../sentencepiece-bleu.py
-perl ../multi-bleu.perl flores101.$tgtLanguage < predictions.txt >> bleu.txt
-sacrebleu flores101.$tgtLanguage -i predictions.txt -m bleu >> bleu.txt
+python3 model-to-txt.py -m $srcModelName -f flores101.$srcLanguage -t predictions-flores.txt -x $modelRootDir
+sacrebleu flores101.$tgtLanguage -i predictions-flores.txt -m bleu >> bleu.txt
 
 cat bleu.txt
+
+

@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 
 
-URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/'
+URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/'
 EXT = 'zip'
 
 def get_list_of_models(url, ext=''):
@@ -40,9 +40,9 @@ def get_filename(url):
     return os.path.basename(a.path)
 
 
-def get_segments():
+def get_segments(language_pair):
     try:
-        filename = "metadata/inputs_used.txt"
+        filename = f"{language_pair}/metadata/inputs_used.txt"
         with open(filename) as f:
             line = f.readline()
             idx = line.find(" ")
@@ -50,17 +50,17 @@ def get_segments():
     except:
         return 0
     
-def get_bleu_scores():
+def get_bleu_scores(language_pair):
     bleu_model = 0
     bleu_flores = 0
 
     try:
-        filename = "metadata/model_description.txt"
+        filename = f"{language_pair}/metadata/model_description.txt"
         BLEU_REGEX_SACRE = "BLEU([^=]*)=[ ]([0-9\.]*)"
         with open(filename) as f:
             lines = f.readlines()
 
-            m = re.match(BLEU_REGEX_SACRE, lines[3])
+            m = re.match(BLEU_REGEX_SACRE, lines[4])
             bleu_model = m[2]
 
             m = re.match(BLEU_REGEX_SACRE, lines[6])
@@ -143,7 +143,7 @@ def get_sorted_models(urls):
 
     return new_list
 
-def get_metrics_from_model_zipfile(url):
+def get_metrics_from_model_zipfile(url, language_pair):
     ZIP_FILE = "model.zip"
     DIR = "tmp/"
 
@@ -158,11 +158,11 @@ def get_metrics_from_model_zipfile(url):
     cmd = 'unzip {0} > /dev/null'.format(ZIP_FILE)
     os.system(cmd)
 
-    segments = get_segments()
+    segments = get_segments(language_pair)
     if segments > 0:
         segments = (int) (segments / 2) # Segments are duplicated upper case, lower case
 
-    bleu_model, bleu_flores = get_bleu_scores()
+    bleu_model, bleu_flores = get_bleu_scores(language_pair)
 
     return segments, bleu_model, bleu_flores
 
@@ -179,7 +179,7 @@ def main():
         for url in models:
                          
             language_pair = get_language_pair(url)
-            segments, bleu_model, bleu_flores = get_metrics_from_model_zipfile(url)
+            segments, bleu_model, bleu_flores = get_metrics_from_model_zipfile(url, language_pair)
             language_names = convert_iso_639_3_to_string(language_pair)
             print("")
             print(f"model '{url}'")
@@ -188,10 +188,10 @@ def main():
             print(f"bleu model '{bleu_model}'")
             print(f"bleu flores '{bleu_flores}'")
             
-            opus_mt = get_opus_mt((language_pair))
+            opus_mt = get_opus_mt(language_pair)
             print(f"opus mt '{opus_mt}'")
             
-            google = get_google((language_pair))
+            google = get_google(language_pair)
             print(f"Google '{google}'")
             filename = get_filename(url)
             entry = f"{language_names} | {bleu_model} |{bleu_flores} |{google} |{opus_mt}| {segments} | [{filename}]({url})"
