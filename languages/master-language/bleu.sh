@@ -14,6 +14,7 @@ then
     wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/texttokenizer.py
     wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/ctranslate.py
     wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/master/use-models-tools/preservemarkup.py
+    pip3 install -r requirements.txt
 fi
 
 modelRootDir=exported/
