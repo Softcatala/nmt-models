@@ -1,6 +1,6 @@
 source_files:
     - corpus-raw/toponims.ja-ca.ja
-    - corpus-raw/law.ja-en-ca.ca
+    - corpus-raw/law.ja-en-ca.ja
     - corpus-raw/tatoeba.ja-ca.ja
     - corpus-raw/tatoeba.ja-es-ca.ja
     - corpus-raw/tatoeba.ja-en-ca.ja
@@ -14,7 +14,7 @@ source_files:
 
 target_files:
     - corpus-raw/toponims.ja-ca.ca
-    - corpus-raw/law.ja-en-ca.ja
+    - corpus-raw/law.ja-en-ca.ca
     - corpus-raw/tatoeba.ja-ca.ca
     - corpus-raw/tatoeba.ja-es-ca.ca
     - corpus-raw/tatoeba.ja-en-ca.ca
