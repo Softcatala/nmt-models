@@ -187,7 +187,7 @@ def split_in_six_files(src_filename, tgt_filename):
                 source = source_train
                 target = target_train
 
-            src, trg, dots = _process_dot(src, trg, dots)
+#            src, trg, dots = _process_dot(src, trg, dots)
 
             source.write(src)
             target.write(trg)
