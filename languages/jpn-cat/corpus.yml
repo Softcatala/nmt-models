@@ -7,10 +7,7 @@ source_files:
     - corpus-raw/jesc.ja-en-ca.ja
     - corpus-raw/kyoto.ja-en-ca.ja
     - corpus-raw/bsd.ja-en-ca.ja
-    - corpus-raw/covost2.ja-ca.ja
-
-
-    
+    - corpus-raw/covost2.ja-ca.ja    
 
 target_files:
     - corpus-raw/toponims.ja-ca.ca
@@ -23,3 +20,5 @@ target_files:
     - corpus-raw/bsd.ja-en-ca.ca
     - corpus-raw/covost2.ja-ca.ca
 
+ensure_dots: False
+augmentation_cap: False
