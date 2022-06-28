@@ -81,12 +81,18 @@ google_scores = load_mt_scores('evaluate/google-bleu.json')
 
 def get_opus_mt(language_pair):
 
-    bleu = opus_mt_scores[language_pair]
+    bleu = opus_mt_scores.get(language_pair)
+    if not bleu:
+        bleu = "N/A"
+
     return bleu
 
 def get_google(language_pair):
 
-    bleu = google_scores[language_pair]
+    bleu = google_scores.get(language_pair)
+    if not bleu:
+        bleu = "N/A"
+
     return bleu
 
 def convert_iso_639_3_to_string(language_pair):
@@ -98,7 +104,8 @@ def convert_iso_639_3_to_string(language_pair):
         "deu" : "German",
         "ita" : "Italian",
         "nld" : "Dutch",
-        "por" : "Portuguese"
+        "por" : "Portuguese",
+        "por" : "Japanese",
     }
 
     for iso in languages.keys():

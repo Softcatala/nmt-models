@@ -151,6 +151,7 @@ def main():
         "ca-pt" : ["cat", "por"],
 
         "jpn-ca" : ["jpn", "cat"],
+        "ca-jpn" : ["cat", "jpn"],
     }
 
     blue_scores = {}
