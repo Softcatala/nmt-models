@@ -105,7 +105,7 @@ def convert_iso_639_3_to_string(language_pair):
         "ita" : "Italian",
         "nld" : "Dutch",
         "por" : "Portuguese",
-        "por" : "Japanese",
+        "jpn" : "Japanese",
     }
 
     for iso in languages.keys():
