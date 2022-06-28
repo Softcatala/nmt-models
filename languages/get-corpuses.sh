@@ -3,7 +3,7 @@
 git clone https://github.com/Softcatala/parallel-catalan-corpus corpus-raw
 cd corpus-raw
 
-declare -a arr=("eng-cat" "deu-cat" "ita-cat" "fra-cat" "spa-cat" "nld-cat" "por-cat")
+declare -a arr=("eng-cat" "deu-cat" "ita-cat" "fra-cat" "spa-cat" "nld-cat" "por-cat" "jpn-cat")
 
 for dirname in "${arr[@]}"; do
     echo Copying $dirname

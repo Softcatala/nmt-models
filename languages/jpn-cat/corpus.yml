@@ -1,0 +1,25 @@
+source_files:
+    - corpus-raw/toponims.ja-ca.ja
+    - corpus-raw/law.ja-en-ca.ja
+    - corpus-raw/tatoeba.ja-ca.ja
+    - corpus-raw/tatoeba.ja-es-ca.ja
+    - corpus-raw/tatoeba.ja-en-ca.ja
+    - corpus-raw/jesc.ja-en-ca.ja
+    - corpus-raw/kyoto.ja-en-ca.ja
+    - corpus-raw/bsd.ja-en-ca.ja
+    - corpus-raw/covost2.ja-ca.ja    
+
+target_files:
+    - corpus-raw/toponims.ja-ca.ca
+    - corpus-raw/law.ja-en-ca.ca
+    - corpus-raw/tatoeba.ja-ca.ca
+    - corpus-raw/tatoeba.ja-es-ca.ca
+    - corpus-raw/tatoeba.ja-en-ca.ca
+    - corpus-raw/jesc.ja-en-ca.ca
+    - corpus-raw/kyoto.ja-en-ca.ca
+    - corpus-raw/bsd.ja-en-ca.ca
+    - corpus-raw/covost2.ja-ca.ca
+
+ensure_dots: False
+augmentation_cap: False
+size_diff_percentage: 0

@@ -9,6 +9,34 @@ import os
 import datetime
 import unicodedata
 
+def read_configuration():
+
+    with open("corpus.yml", 'r') as stream:
+        content = yaml.safe_load(stream)
+
+    sources = content['source_files']
+    targets = content['target_files']
+    max_lines = content.get('max_lines')
+
+    if len(sources) != len(targets):
+        print("Different number of sources and targets")
+        exit()
+
+    ensure_dots = content.get('ensure_dots', True)
+    augmentation_cap = content.get('augmentation_cap', True)
+    size_diff_percentage = content.get('size_diff_percentage', 70)
+
+    d = {}
+    d['sources'] = sources
+    d['targets'] = targets
+    d['max_lines'] = max_lines
+    d['ensure_dots'] = ensure_dots
+    d['augmentation_cap'] = augmentation_cap
+    d['size_diff_percentage'] = size_diff_percentage
+    return d
+
+g_configuration = read_configuration()
+
 def file_len(fname):
     with open(fname) as f:
         for i, l in enumerate(f):
@@ -91,14 +119,16 @@ def _is_sentence_len_good(src, trg):
 
     MIN_CHARS = 50
     if max(lsrc, ltrg) > MIN_CHARS:
-        if lsrc < ltrg:
-           tmp = lsrc
-           lsrc = ltrg
-           ltrg = tmp
+        size_diff_percentage = g_configuration['size_diff_percentage']
+        if size_diff_percentage > 0:
+            if lsrc < ltrg:
+               tmp = lsrc
+               lsrc = ltrg
+               ltrg = tmp
 
-        diff = (lsrc - ltrg) / lsrc * 100
-        if diff > 70:
-            return False
+            diff = (lsrc - ltrg) / lsrc * 100
+            if diff > size_diff_percentage:
+                return False
 
     return True
 
@@ -123,6 +153,10 @@ def split_in_six_files(src_filename, tgt_filename):
     if test_each == validation_each:
         print("test_each ({0}) and validation_each  ({0}) cannot be equal".format(test_each, validation_each))
         return
+        
+
+    ensure_dots = g_configuration['ensure_dots']
+    augmentation_cap = g_configuration['augmentation_cap']
         
     with open("src-val.txt", "w") as source_val,\
         open("tgt-val.txt", "w") as target_val,\
@@ -187,14 +221,16 @@ def split_in_six_files(src_filename, tgt_filename):
                 source = source_train
                 target = target_train
 
-            src, trg, dots = _process_dot(src, trg, dots)
+            if ensure_dots:
+                src, trg, dots = _process_dot(src, trg, dots)
 
             source.write(src)
             target.write(trg)
 
             # Duplicate corpus in upper case to translate properly uppercase text
-            source.write(src.upper())
-            target.write(trg.upper())
+            if augmentation_cap:
+                source.write(src.upper())
+                target.write(trg.upper())
 
             strings = strings + 1
 
@@ -224,31 +260,15 @@ def append_lines_from_file(src_filename, trg_file, max_lines):
     print("Appended {0} lines from {1}".format(lines, src_filename))
     return lines
 
-def read_configuration():
-
-    with open("corpus.yml", 'r') as stream:
-        content = yaml.safe_load(stream)
-
-    sources = content['source_files']
-    targets = content['target_files']
-    max_lines = content.get('max_lines')
-
-    if max_lines:
-        print(f"max_lines: {max_lines}")
-
-    if len(sources) != len(targets):
-        print("Different number of sources and targets")
-        exit()
-
-    return sources, targets, max_lines
-    
 
 def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
 
     src_lines = 0
     trg_lines = 0
 
-    sources, targets, max_lines = read_configuration()
+    sources = g_configuration['sources']
+    targets = g_configuration['targets']
+    max_lines = g_configuration['max_lines']
 
     print("Join multiple files in two src and tgt files")
     with open(src_filename, "w") as tf_source,\
