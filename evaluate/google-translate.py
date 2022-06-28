@@ -59,6 +59,7 @@ def _translate_text_google(text, key, pair):
 
     url = f"{SERVER}/?key={key}&source={src_lang}&target={tgt_lang}"
     url += "&q=" + urllib.parse.quote_plus(text.encode('utf-8'))
+#    print(url)
     response = urllib.request.urlopen(url)
     r = response.read().decode("utf-8")
     data = json.loads(r)
@@ -148,6 +149,8 @@ def main():
 
         "pt-ca" : ["por", "cat"],
         "ca-pt" : ["cat", "por"],
+
+        "jpn-ca" : ["jpn", "cat"],
     }
 
     blue_scores = {}
