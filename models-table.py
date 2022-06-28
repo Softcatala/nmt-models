@@ -39,15 +39,27 @@ def get_filename(url):
     a = urlparse(url)
     return os.path.basename(a.path)
 
+# To address a bug introduced in June 2022 training
+# can be removed after
+buggy_segment = {}
 
 def get_segments(language_pair):
     try:
+        source_language = language_pair[0:3]
+        target_language = language_pair[4:]
         filename = f"{language_pair}/metadata/inputs_used.txt"
         with open(filename) as f:
             line = f.readline()
             idx = line.find(" ")
-            return int(line[0:idx])
+            value = int(line[0:idx])
+
+            if source_language != "cat":
+                buggy_segment[target_language] = value
+            return value
     except:
+        if source_language in buggy_segment:
+            return buggy_segment[source_language]
+
         return 0
     
 def get_bleu_scores(language_pair):
