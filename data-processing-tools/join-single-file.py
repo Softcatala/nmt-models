@@ -18,9 +18,6 @@ def read_configuration():
     targets = content['target_files']
     max_lines = content.get('max_lines')
 
-    if max_lines:
-        print(f"max_lines: {max_lines}")
-
     if len(sources) != len(targets):
         print("Different number of sources and targets")
         exit()
