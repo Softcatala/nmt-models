@@ -14,9 +14,12 @@ cp ../$src/tgt-train.txt.token src-train.txt.token
 cp ../$src/tgt-val.txt.token src-val.txt.token
 cp ../$src/tgt-test.txt.token src-test.txt.token
 
-# Used for evalution
+# Used for evaluation & metadata
 cp ../$src/src-test.txt tgt-test.txt
 cp ../$src/tgt-test.txt src-test.txt
+cp ../$src/src-train.txt tgt-train.txt
+cp ../$src/tgt-train.txt src-train.txt
+
 
 cp ../$src/sp-vocab.txt.token .
 cp ../$src/sp_m.model .
