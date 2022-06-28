@@ -27,6 +27,7 @@ def read_configuration():
 
     ensure_dots = content.get('ensure_dots', True)
     augmentation_cap = content.get('augmentation_cap', True)
+    size_diff_percentage = content.get('size_diff_percentage', 70)
 
     d = {}
     d['sources'] = sources
@@ -34,6 +35,7 @@ def read_configuration():
     d['max_lines'] = max_lines
     d['ensure_dots'] = ensure_dots
     d['augmentation_cap'] = augmentation_cap
+    d['size_diff_percentage'] = size_diff_percentage
     return d
 
 g_configuration = read_configuration()
@@ -120,14 +122,16 @@ def _is_sentence_len_good(src, trg):
 
     MIN_CHARS = 50
     if max(lsrc, ltrg) > MIN_CHARS:
-        if lsrc < ltrg:
-           tmp = lsrc
-           lsrc = ltrg
-           ltrg = tmp
+        size_diff_percentage = g_configuration['size_diff_percentage']
+        if size_diff_percentage > 0:
+            if lsrc < ltrg:
+               tmp = lsrc
+               lsrc = ltrg
+               ltrg = tmp
 
-        diff = (lsrc - ltrg) / lsrc * 100
-        if diff > 70:
-            return False
+            diff = (lsrc - ltrg) / lsrc * 100
+            if diff > size_diff_percentage:
+                return False
 
     return True
 

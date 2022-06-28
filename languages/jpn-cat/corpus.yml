@@ -22,3 +22,4 @@ target_files:
 
 ensure_dots: False
 augmentation_cap: False
+size_diff_percentage: 0
