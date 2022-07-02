@@ -12,20 +12,22 @@ And here the tools that at Softcatalà to serve these models in production: http
 
 Language pair | Model BLEU | Flores101 BLEU | Google BLEU | Opus-MT BLEU | Sentences | Download model
 |---|---|---|---|---|---|---
-|German-Catalan | 37.4 |24.7 |35.5 |18.5| 5376400 | [deu-cat-2021-10-23.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/deu-cat-2021-10-23.zip)
-|Catalan-German | 30.5 |22.0 |32.9 |15.8| 5408192 | [cat-deu-2021-10-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-deu-2021-10-27.zip)
-|English-Catalan | 45.2 |40.7 |46.0 |29.8| 4459276 | [eng-cat-2021-10-23.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/eng-cat-2021-10-23.zip)
-|Catalan-English | 46.9 |41.0 |47.0 |29.6| 4493908 | [cat-eng-2021-10-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-eng-2021-10-24.zip)
-|French-Catalan | 42.1 |31.6 |37.3 |27.2| 2555707 | [fra-cat-2021-10-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/fra-cat-2021-10-25.zip)
-|Catalan-French | 42.1 |34.4 |41.7 |27.9| 2573723 | [cat-fra-2021-10-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-fra-2021-10-27.zip)
-|Italian-Catalan | 40.6 |26.4 |30.6 |22.0| 2563550 | [ita-cat-2021-10-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/ita-cat-2021-10-25.zip)
-|Catalan-Italian | 38.0 |24.0 |27.5 |19.2| 2689004 | [cat-ita-2021-10-26.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-ita-2021-10-26.zip)
-|Dutch-Catalan | 31.8 |19.2 |27.1 |15.8| 1838820 | [nld-cat-2021-10-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/nld-cat-2021-10-24.zip)
-|Catalan-Dutch | 28.9 |17.4 |23.4 |13.4| 1852678 | [cat-nld-2021-10-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-nld-2021-10-28.zip)
-|Portuguese-Catalan | 42.1 |32.8 |38.7 |28.1| 2037197 | [por-cat-2021-10-26.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/por-cat-2021-10-26.zip)
-|Catalan-Portuguese | 39.6 |31.4 |40.0 |27.5| 2052812 | [cat-por-2021-10-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-por-2021-10-27.zip)
-|Spanish-Catalan | 89.3 |22.6 |23.6 |22.5| 10278209 | [spa-cat-2021-10-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/spa-cat-2021-10-28.zip)
-|Catalan-Spanish | 88.6 |23.9 |24.2 |23.2| 10328129 | [cat-spa-2021-10-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/cat-spa-2021-10-29.zip)
+|German-Catalan | 38.2 |25.6 |35.5 |18.5| 5536720 | [deu-cat-2022-06-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/deu-cat-2022-06-19.zip)
+|Catalan-German | 31.9 |22.7 |32.9 |15.8| 5536720 | [cat-deu-2022-06-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-deu-2022-06-25.zip)
+|English-Catalan | 46.2 |42.2 |46.0 |29.8| 4499272 | [eng-cat-2022-06-18.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/eng-cat-2022-06-18.zip)
+|Catalan-English | 46.8 |42.4 |47.0 |29.6| 4499272 | [cat-eng-2022-06-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-eng-2022-06-24.zip)
+|French-Catalan | 41.9 |31.8 |37.3 |27.2| 2566302 | [fra-cat-2022-06-20.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/fra-cat-2022-06-20.zip)
+|Catalan-French | 41.8 |35.1 |41.7 |27.9| 2566302 | [cat-fra-2022-06-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-fra-2022-06-25.zip)
+|Italian-Catalan | 40.0 |26.8 |30.6 |22.0| 2584598 | [ita-cat-2022-06-21.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/ita-cat-2022-06-21.zip)
+|Catalan-Italian | 36.5 |24.6 |27.5 |19.2| 2584598 | [cat-ita-2022-06-26.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-ita-2022-06-26.zip)
+|Japanese-Catalan | 24.1 |16.9 |23.4 |N/A| 1974248 | [jpn-cat-2022-06-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/jpn-cat-2022-06-29.zip)
+|Catalan-Japanese | 26.9 |19.5 |32.5 |N/A| 1974248 | [cat-jpn-2022-07-02.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-jpn-2022-07-02.zip)
+|Dutch-Catalan | 31.5 |19.8 |27.1 |15.8| 1844622 | [nld-cat-2022-06-23.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/nld-cat-2022-06-23.zip)
+|Catalan-Dutch | 29.2 |18.0 |23.4 |13.4| 1844622 | [cat-nld-2022-06-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-nld-2022-06-29.zip)
+|Portuguese-Catalan | 41.7 |34.2 |38.7 |28.1| 2043019 | [por-cat-2022-06-22.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/por-cat-2022-06-22.zip)
+|Catalan-Portuguese | 39.4 |32.4 |40.0 |27.5| 2043019 | [cat-por-2022-06-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-por-2022-06-28.zip)
+|Spanish-Catalan | 89.8 |22.7 |23.6 |22.5| 7596985 | [spa-cat-2022-06-21.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/spa-cat-2022-06-21.zip)
+|Catalan-Spanish | 88.4 |24.3 |24.2 |23.2| 7596985 | [cat-spa-2022-06-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-spa-2022-06-27.zip)
 
 Legend:
 * *Model BLEU* column indicates the models' BLEU score against the corpus test dataset (from train/dev/test)
@@ -59,8 +61,8 @@ At Softcatalà we built also command line tools to translate TXT and PO files. S
 Download the model and unpack it:
 
 ```bash
-wget https://www.softcatala.org/pub/softcatala/opennmt/models/baseline/eng-cat-2021-09-04-1630790361.zip
-unzip eng-cat-2021-09-04-1630790361.zip
+https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/eng-cat-2022-06-18.zip
+unzip eng-cat-2022-06-18.zip
 ```
 
 Install dependencies:
@@ -72,7 +74,7 @@ Simple translation using Python:
 ```python
 
 import ctranslate2
-translator = ctranslate2.Translator("ctranslate2/")
+translator = ctranslate2.Translator("eng-cat/ctranslate2/")
 translator.translate_batch([["▁Hello", "▁world", "!"]])
 [[{'tokens': ['▁Hola', '▁món', '!']}]]
 
@@ -84,7 +86,7 @@ Simple tokenization & translation using Python:
 ```python
 
 import pyonmttok
-tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = "tokenizer/sp_m.model")
+tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = "eng-cat/tokenizer/sp_m.model")
 tokenized=tokenizer.tokenize("Hello world!")
 
 import ctranslate2

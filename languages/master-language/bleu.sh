@@ -17,14 +17,20 @@ then
     pip3 install -r requirements.txt
 fi
 
+
+if [ $tgtLanguage = "jpn" ]; then
+    tokenizer="--tokenize ja-mecab"
+fi
+
+
 modelRootDir=exported/
 echo "Test data set" > bleu.txt
 python3 model-to-txt.py -m $srcModelName -f src-test.txt -t predictions-test.txt -x $modelRootDir
-sacrebleu tgt-test.txt -i predictions-test.txt -m bleu >> bleu.txt
+sacrebleu tgt-test.txt $tokenizer -i predictions-test.txt -m bleu --format text >> bleu.txt
 
 echo "Flores data set" >> bleu.txt
 python3 model-to-txt.py -m $srcModelName -f flores101.$srcLanguage -t predictions-flores.txt -x $modelRootDir
-sacrebleu flores101.$tgtLanguage -i predictions-flores.txt -m bleu >> bleu.txt
+sacrebleu $tokenizer flores101.$tgtLanguage -i predictions-flores.txt -m bleu --format text >> bleu.txt
 
 cat bleu.txt
 
