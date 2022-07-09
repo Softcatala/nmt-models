@@ -37,7 +37,8 @@ Legend:
 * *Sentences* is the number of sentences in the corpus used for training
 
 Notes:
-* All models are based on TransformerRelative and SentencePiece has been used as tokenizer. We use [Sacrebleu](https://github.com/mjpost/sacrebleu) to calculate BLUE scores.
+* All models are based on TransformerRelative and SentencePiece has been used as tokenizer.
+* We use [Sacrebleu](https://github.com/mjpost/sacrebleu) to calculate BLUE scores with the 13a tokenizer.
 * These models are used in production with modest hardware (CPU). As result, these models are a balance between precision and latency. It is possible to further improve BLUE scores by ~+1 BLEU, but at a significant latency cost at inference.
 * BLEU is the most popular metric for evaluating machine translation but also broadly acknowledged that it is not perfect. It's estimated that has a [~80% correlation](https://aclanthology.org/W05-0909.pdf) with human judgment
 * Flores101 has some limitations. It was produced translating from English to the other 100 languages. When you use flores for example to benchmark Catalan - Spanish translations, consider that the Catalan -> Spanish corpus was produced by translating from English to Catalan and from English to Spanish. The resulting Spanish and Catalan translations are different from what a translator will do translating directly from Spanish to Catalan. As a summary, Flores101 is more reliable for benchmarks where English is the source or target language. 
