@@ -12,8 +12,8 @@ And here the tools that at Softcatalà to serve these models in production: http
 
 Language pair | Model BLEU | Flores101 BLEU | Google BLEU | Opus-MT BLEU | Sentences | Download model
 |---|---|---|---|---|---|---
-|German-Catalan | 38.2 |25.6 |35.5 |18.5| 5536720 | [deu-cat-2022-06-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/deu-cat-2022-06-19.zip)
-|Catalan-German | 31.9 |22.7 |32.9 |15.8| 5536720 | [cat-deu-2022-06-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-deu-2022-06-25.zip)
+|German-Catalan | 35.8 |28.5 |35.5 |18.5| 2961962 | [deu-cat-2022-07-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/deu-cat-2022-07-09.zip)
+|Catalan-German | 30.0 |24.5 |32.9 |15.8| 2961962 | [cat-deu-2022-07-10.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-deu-2022-07-10.zip)
 |English-Catalan | 46.2 |42.2 |46.0 |29.8| 4499272 | [eng-cat-2022-06-18.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/eng-cat-2022-06-18.zip)
 |Catalan-English | 46.8 |42.4 |47.0 |29.6| 4499272 | [cat-eng-2022-06-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-eng-2022-06-24.zip)
 |French-Catalan | 41.9 |31.8 |37.3 |27.2| 2566302 | [fra-cat-2022-06-20.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/fra-cat-2022-06-20.zip)
