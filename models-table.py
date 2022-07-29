@@ -90,22 +90,16 @@ def load_mt_scores(filename):
 
 opus_mt_scores = load_mt_scores('evaluate/opusmt-bleu.json')
 google_scores = load_mt_scores('evaluate/google-bleu.json')
+meta_scores = load_mt_scores('evaluate/meta-bleu.json')
 
-def get_opus_mt(language_pair):
+def get_blue_score(language_pair, scores):
 
-    bleu = opus_mt_scores.get(language_pair)
+    bleu = scores.get(language_pair)
     if not bleu:
         bleu = "N/A"
 
     return bleu
 
-def get_google(language_pair):
-
-    bleu = google_scores.get(language_pair)
-    if not bleu:
-        bleu = "N/A"
-
-    return bleu
 
 def convert_iso_639_3_to_string(language_pair):
     languages = {
@@ -189,10 +183,10 @@ def main():
     print("Builds a table with available models")
 
     with open("table.md", "w") as table_md, open("table.csv", "w") as table_cvs:
-        head = "Language pair | Model BLEU | Flores101 BLEU | Google BLEU | Opus-MT BLEU | Sentences | Download model"
+        head = "Language pair | SC model BLEU | SC Flores101 BLEU | Google BLEU | Meta NLLB200 BLEU | Opus-MT BLEU | Sentences | Download model"
         table_md.write(f"{head}\n")
         table_cvs.write("{0}\n".format(head.replace("|",",")))
-        table_md.write("|---|---|---|---|---|---|---\n")
+        table_md.write("|---|---|---|---|---|---|---|---\n")
         models = get_list_of_models(URL, EXT)
         models = get_sorted_models(models)
         for url in models:
@@ -207,13 +201,15 @@ def main():
             print(f"bleu model '{bleu_model}'")
             print(f"bleu flores '{bleu_flores}'")
             
-            opus_mt = get_opus_mt(language_pair)
+            opus_mt = get_blue_score(language_pair, opus_mt_scores)
             print(f"opus mt '{opus_mt}'")
-            
-            google = get_google(language_pair)
+            meta_mt = get_blue_score(language_pair, meta_scores)
+            print(f"meta '{meta_mt}'")
+            google = get_blue_score(language_pair, google_scores)
             print(f"Google '{google}'")
+
             filename = get_filename(url)
-            entry = f"{language_names} | {bleu_model} |{bleu_flores} |{google} |{opus_mt}| {segments} | [{filename}]({url})"
+            entry = f"{language_names} | {bleu_model} |{bleu_flores} |{google} |{meta_mt}|{opus_mt}| {segments} | [{filename}]({url})"
             table_md.write(f"|{entry}\n")
             table_cvs.write("{0}\n".format(entry.replace("|",",")))
 
