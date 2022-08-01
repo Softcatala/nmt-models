@@ -1,7 +1,9 @@
 source_files:
+    - corpus-raw/open-source-nl-ca.nl
     - corpus-raw/europarl.nl-ca.nl
     - corpus-raw/wikimatrix-nl-ca.nl
 
 target_files:
+    - corpus-raw/open-source-nl-ca.ca
     - corpus-raw/europarl.nl-ca.ca
     - corpus-raw/wikimatrix-nl-ca.ca
