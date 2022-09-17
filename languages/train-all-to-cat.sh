@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare -a arr=("eng-cat" "deu-cat" "fra-cat" "ita-cat" "spa-cat" "por-cat" "nld-cat")
-#declare -a arr=("fra-cat")
+#declare -a arr=("eng-cat")
 
 for dirname in "${arr[@]}"; do
     echo Processing $dirname
