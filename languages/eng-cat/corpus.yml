@@ -8,6 +8,7 @@ source_files:
     - corpus-raw/covost2.ca-en.en
     - corpus-raw/covost2.en-ca.en
     - corpus-raw/wikimedia-ca-en.en
+    - corpus-raw/gene_crawling_ca-en.en
 
 target_files:
     - corpus-raw/MemoriesProjectesLliures.en-ca.ca
@@ -19,4 +20,5 @@ target_files:
     - corpus-raw/covost2.ca-en.ca
     - corpus-raw/covost2.en-ca.ca
     - corpus-raw/wikimedia-ca-en.ca
+    - corpus-raw/gene_crawling_ca-en.ca
 
