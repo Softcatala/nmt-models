@@ -1,3 +1,5 @@
+import tensorflow as tf
+import opennmt as onmt
 class Softcatala(transformer.Transformer):
     """Defines a base Transformer model using relative position representations as
     described in https://arxiv.org/abs/1803.02155.
