@@ -12,7 +12,7 @@ class SoftcatalaModel(onmt.models.Transformer):
             ffn_inner_dim=4096,
             position_encoder_class=None,
             maximum_relative_position=20,
-            share_embeddings=sequence_to_sequence.EmbeddingsSharingLevel.AUTO
+            share_embeddings=onmt.models.sequence_to_sequence.EmbeddingsSharingLevel.AUTO
         )
         
 model = SoftcatalaModel
