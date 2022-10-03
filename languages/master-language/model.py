@@ -14,3 +14,9 @@ class Softcatala(onmt.models.Transformer):
             maximum_relative_position=20,
             share_embeddings=sequence_to_sequence.EmbeddingsSharingLevel.AUTO
         )
+        
+#          num_units: The number of hidden units.
+#          num_heads: The number of heads in each self-attention layers.
+#          ffn_inner_dim: The inner dimension of the feed forward layers.
+#          maximum_relative_position: Maximum relative position representation
+ 
