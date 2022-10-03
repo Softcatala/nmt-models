@@ -1,6 +1,6 @@
 import tensorflow as tf
 import opennmt as onmt
-class Softcatala(onmt.models.Transformer):
+class SoftcatalaModel(onmt.models.Transformer):
     """Defines a base Transformer model using relative position representations as
     described in https://arxiv.org/abs/1803.02155.
     """
@@ -15,8 +15,11 @@ class Softcatala(onmt.models.Transformer):
             share_embeddings=sequence_to_sequence.EmbeddingsSharingLevel.AUTO
         )
         
+model = SoftcatalaModel
+
 #          num_units: The number of hidden units.
 #          num_heads: The number of heads in each self-attention layers.
 #          ffn_inner_dim: The inner dimension of the feed forward layers.
 #          maximum_relative_position: Maximum relative position representation
 #          Where the input / output dimensions are much greater than the hidden input dimension. 
+
