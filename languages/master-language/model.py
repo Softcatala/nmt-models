@@ -19,4 +19,4 @@ class Softcatala(onmt.models.Transformer):
 #          num_heads: The number of heads in each self-attention layers.
 #          ffn_inner_dim: The inner dimension of the feed forward layers.
 #          maximum_relative_position: Maximum relative position representation
- 
+#          Where the input / output dimensions are much greater than the hidden input dimension. 
