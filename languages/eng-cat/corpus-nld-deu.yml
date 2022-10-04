@@ -1,0 +1,44 @@
+source_files:
+    - corpus-raw/MemoriesProjectesLliures.en-ca.en
+    - corpus-raw/WikiMatrix.en-ca.txt.en
+    - corpus-raw/globalvoices.en-ca.en
+    - corpus-raw/europarl.en-ca.en
+    - corpus-raw/OpenSubtitles2018.en-ca.en
+    - corpus-raw/tedtalks.en-ca.en
+    - corpus-raw/covost2.ca-en.en
+    - corpus-raw/covost2.en-ca.en
+    - corpus-raw/wikimedia-ca-en.en
+    - ../deu-cat/corpus-raw/open-source-de-ca.de
+    - ../deu-cat/corpus-raw/covost_v2.ca-de.de
+    - ../deu-cat/corpus-raw/OpenSubtitles.ca-de.de
+    - ../deu-cat/corpus-raw/TED2020.ca-de.de
+    - ../deu-cat/corpus-raw/TildeMODEL.de-es.de
+    - ../deu-cat/corpus-raw/europarl.de-ca.de
+    - ../nld-cat/corpus-raw/open-source-nl-ca.nl
+    - ../nld-cat/corpus-raw/europarl.nl-ca.nl
+    - ../nld-cat/corpus-raw/wikimatrix-nl-ca.nl
+
+target_files:
+    - corpus-raw/MemoriesProjectesLliures.en-ca.ca
+    - corpus-raw/WikiMatrix.en-ca.txt.ca
+    - corpus-raw/globalvoices.en-ca.ca
+    - corpus-raw/europarl.en-ca.ca
+    - corpus-raw/OpenSubtitles2018.en-ca.ca
+    - corpus-raw/tedtalks.en-ca.ca
+    - corpus-raw/covost2.ca-en.ca
+    - corpus-raw/covost2.en-ca.ca
+    - corpus-raw/wikimedia-ca-en.ca
+    - ../deu-cat/corpus-raw/open-source-de-ca.ca
+    - ../deu-cat/corpus-raw/covost_v2.ca-de.de
+    - ../deu-cat/corpus-raw/OpenSubtitles.ca-de.ca
+    - ../deu-cat/corpus-raw/TED2020.ca-de.ca
+    - ../deu-cat/corpus-raw/TildeMODEL.de-ca.ca
+    - ../deu-cat/corpus-raw/europarl.de-ca.ca
+    - ../nld-cat/corpus-raw/open-source-nl-ca.ca
+    - ../nld-cat/corpus-raw/europarl.nl-ca.ca
+    - ../nld-cat/corpus-raw/wikimatrix-nl-ca.ca
+
+max_lines: 1000000
+
+
+
