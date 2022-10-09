@@ -8,6 +8,7 @@ for dirname in "${arr[@]}"; do
     pushd $dirname
     # Done at pre-process-all.sh
     #./preprocess.sh
+    rm -r -f run/
     ./voc.sh
     ./train.sh
     ./export.sh

@@ -14,6 +14,7 @@ for dirname in "${arr[@]}"; do
 
     cp ../master-language/* .
     ./copy-corpus.sh
+    rm -r -f run/
     ./train.sh
     ./export.sh
     popd
