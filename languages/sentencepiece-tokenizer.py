@@ -19,8 +19,8 @@
 # Boston, MA 02111-1307, USA.
 
 import pyonmttok
+import os
 from optparse import OptionParser
-from shutil import copyfile
 
 def read_parameters():
     parser = OptionParser()
@@ -85,13 +85,14 @@ def ingest_file(learner, ingest_file):
 
             target.write(src)
 
-    return learner.ingest_file(reduced_file)
+    learner.ingest_file(reduced_file)
+    return reduced_file
 
 def src(vocabulary_size, model, language_pair):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
-                                            keep_vocab = True)
-    ingest_file(learner, "src-train.txt")
-    ingest_file(learner, "tgt-train.txt")
+                                             keep_vocab=True)
+    reduced_src = ingest_file(learner, "src-train.txt")
+    reduced_tgt = ingest_file(learner, "tgt-train.txt")
 
     tokenizer = learner.learn(model, verbose=True)
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
@@ -105,10 +106,12 @@ def src(vocabulary_size, model, language_pair):
     source_language, target_language = language_pair.split("-")
     flores_src = f"flores101.{source_language}"
     flores_tgt = f"flores101.{target_language}"
-    
+
     tokens = tokenizer.tokenize_file(flores_src, flores_src + ".token")
     tokens = tokenizer.tokenize_file(flores_tgt, flores_tgt + ".token")
 
+    os.remove(reduced_src)
+    os.remove(reduced_tgt)
 
 def main():
 
