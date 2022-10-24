@@ -35,6 +35,7 @@ Legend:
 * *Opus-MT BLEU* is the BLUE score of the [Opus-MT models](https://github.com/Helsinki-NLP/Opus-MT) using the Flores101 benchmark (our ambition is to outperform them)
 * *Sentences* is the number of sentences in the corpus used for training
 * Meta NLLB200 refers to nllb-200-3.3B model from Meta. This is a very slow model and it's distilled version performs significantly worse.
+
 Notes:
 * All models are based on TransformerRelative and SentencePiece has been used as tokenizer.
 * We use [Sacrebleu](https://github.com/mjpost/sacrebleu) to calculate BLUE scores with the 13a tokenizer.
