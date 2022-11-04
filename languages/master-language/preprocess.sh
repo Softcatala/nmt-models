@@ -47,6 +47,8 @@ cp corpus/$srcModelName/src-test.txt .
 cp corpus/$srcModelName/tgt-test.txt .
 cp corpus/$srcModelName/tgt-train.txt .
 cp corpus/$srcModelName/src-train.txt .
+cp corpus/$srcModelName/tgt-val.txt .
+cp corpus/$srcModelName/src-val.txt .
 cp ../../evaluate/flores101.$srcLanguage .
 cp ../../evaluate/flores101.$tgtLanguage .
 
