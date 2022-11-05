@@ -91,7 +91,7 @@ tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = "eng-cat/tokenizer/sp
 tokenized=tokenizer.tokenize("Hello world!")
 
 import ctranslate2
-translator = ctranslate2.Translator("ctranslate2/")
+translator = ctranslate2.Translator("eng-cat/ctranslate2/")
 translated = translator.translate_batch([tokenized[0]])
 print(tokenizer.detokenize(translated[0][0]['tokens']))
 Hola món!
