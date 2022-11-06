@@ -1,0 +1,20 @@
+source_files:
+    - corpus-raw/MemoriesProjectesLliures.en-ca.gl
+    - corpus-raw/WikiMatrix.en-ca.txt.gl
+    - corpus-raw/globalvoices.en-ca.gl
+    - corpus-raw/OpenSubtitles2018.en-ca.gl
+    - corpus-raw/tedtalks.en-ca.gl
+    - corpus-raw/covost2.ca-en.gl
+    - corpus-raw/covost2.en-ca.gl
+    - corpus-raw/wikimedia-ca-en.gl
+
+target_files:
+    - corpus-raw/MemoriesProjectesLliures.en-ca.ca
+    - corpus-raw/WikiMatrix.en-ca.txt.ca
+    - corpus-raw/globalvoices.en-ca.ca
+    - corpus-raw/OpenSubtitles2018.en-ca.ca
+    - corpus-raw/tedtalks.en-ca.ca
+    - corpus-raw/covost2.ca-en.ca
+    - corpus-raw/covost2.en-ca.ca
+    - corpus-raw/wikimedia-ca-en.ca
+

@@ -73,6 +73,9 @@ def main():
 
         "pt-ca" : ["por", "cat"],
         "ca-pt" : ["cat", "por"],
+
+        "gl-ca" : ["glg", "cat"],
+        "ca-gl" : ["cat", "glg"],
     }
 
     blue_scores = {}

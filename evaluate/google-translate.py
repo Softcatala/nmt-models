@@ -157,6 +157,9 @@ def main():
 
         "jpn-ca" : ["jpn", "cat"],
         "ca-jpn" : ["cat", "jpn"],
+
+        "gl-ca" : ["glg", "cat"],
+        "ca-gl" : ["cat", "glg"],
     }
 
     blue_scores = {}
