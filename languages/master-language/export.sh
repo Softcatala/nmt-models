@@ -32,5 +32,5 @@ cat bleu.txt >>  $modelDescription
 #
 # Package results
 #
-cd exported && zip -r ../$modelName-$currentDate.zip *
+cd exported && rm -f ../$modelName-$currentDate.zip && zip -r ../$modelName-$currentDate.zip *
 #scp -i ~/.ssh/sc_key -P 2662 ../$modelName-$currentDate.zip baixades@softcatala.org:/home/baixades/models/2022-06-17/
