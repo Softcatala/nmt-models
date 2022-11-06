@@ -80,7 +80,8 @@ def get_bleu_scores(language_pair):
 
             return bleu_model, bleu_flores
 
-    except:
+    except Exception as e:
+        print(f"Error: {e}")
         return bleu_model, bleu_flores
 
 def load_mt_scores(filename):
