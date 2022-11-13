@@ -76,6 +76,9 @@ def main():
 
         "gl-ca" : ["glg", "cat"],
         "ca-gl" : ["cat", "glg"],
+
+        "oc-ca" : ["oci", "cat"],
+        "ca-oc" : ["cat", "oci"],
     }
 
     blue_scores = {}
