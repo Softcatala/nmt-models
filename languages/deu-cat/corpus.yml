@@ -8,7 +8,7 @@ source_files:
 
 target_files:
     - corpus-raw/open-source-de-ca.ca
-    - corpus-raw/covost_v2.ca-de.de
+    - corpus-raw/covost_v2.ca-de.ca
     - corpus-raw/OpenSubtitles.ca-de.ca
     - corpus-raw/TED2020.ca-de.ca
     - corpus-raw/TildeMODEL.de-ca.ca
