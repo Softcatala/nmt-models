@@ -8,5 +8,5 @@ for dirname in "${arr[@]}"; do
     ./preprocess.sh &
     popd
 done
-
+wait
 
