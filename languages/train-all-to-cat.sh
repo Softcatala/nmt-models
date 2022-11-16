@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a arr=("eng-cat" "deu-cat" "fra-cat" "ita-cat" "spa-cat" "por-cat" "nld-cat" "glg-cat")
+declare -a arr=("eng-cat" "deu-cat" "fra-cat" "ita-cat" "spa-cat" "por-cat" "nld-cat" "glg-cat" "oci-cat")
 #declare -a arr=("eng-cat")
 
 for dirname in "${arr[@]}"; do
