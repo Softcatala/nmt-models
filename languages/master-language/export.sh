@@ -1,4 +1,5 @@
-modelName=${PWD##*/}
+currentDir=${PWD##*/}
+modelName=${currentDir:0:7}
 exportDir=exported/$modelName
 rm $exportDir -r -f
 mkdir -p $exportDir/metadata
