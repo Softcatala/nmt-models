@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import urlparse
 
 
-URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/'
+URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/'
 EXT = 'zip'
 
 def get_list_of_models(url, ext=''):
@@ -68,15 +68,15 @@ def get_bleu_scores(language_pair):
 
     try:
         filename = f"{language_pair}/metadata/model_description.txt"
-        BLEU_REGEX_SACRE = "BLEU([^=]*)=[ ]([0-9\.]*)"
+        BLEU_REGEX_SACRE = "([ ]*)?BLEU([^=]*)=[ ]([0-9\.]*)"
         with open(filename) as f:
             lines = f.readlines()
 
             m = re.match(BLEU_REGEX_SACRE, lines[4])
-            bleu_model = m[2]
+            bleu_model = m[3]
 
-            m = re.match(BLEU_REGEX_SACRE, lines[6])
-            bleu_flores = m[2]
+            m = re.match(BLEU_REGEX_SACRE, lines[7])
+            bleu_flores = m[3]
 
             return bleu_model, bleu_flores
 
@@ -185,6 +185,7 @@ def get_metrics_from_model_zipfile(url, language_pair):
 def main():
     print("Builds a table with available models")
 
+    cnt_models = 0
     with open("table.md", "w") as table_md, open("table.csv", "w") as table_cvs:
         head = "Language pair | SC model BLEU | SC Flores101 BLEU | Google BLEU | Meta NLLB200 BLEU | Opus-MT BLEU | Sentences | Download model"
         table_md.write(f"{head}\n")
@@ -215,6 +216,9 @@ def main():
             entry = f"{language_names} | {bleu_model} |{bleu_flores} |{google} |{meta_mt}|{opus_mt}| {segments} | [{filename}]({url})"
             table_md.write(f"|{entry}\n")
             table_cvs.write("{0}\n".format(entry.replace("|",",")))
+            cnt_models +=1
+
+    print(f"\nProcessed {cnt_models} models")
 
 if __name__ == "__main__":
     main()

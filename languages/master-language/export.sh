@@ -18,10 +18,9 @@ python3 ../../install-scripts/stack-versions.py >> $modelDescription
 wc corpus/$modelName/src-train.txt -l > $exportDir/metadata/inputs_used.txt
 ls corpus/$modelName/*.txt -l >> $exportDir/metadata/inputs_used.txt
 cp *.model $exportDir/tokenizer/
-cp data.yml $exportDir/metadata/
-cp corpus.yml $exportDir/metadata/
+cp corpus.yml data.yml model.py $exportDir/metadata/
 cp sp-vocab.txt.token $exportDir/tensorflow/assets/
-ct2-opennmt-tf-converter --model_path run/ --model_type TransformerBaseRelative --output_dir $exportDir/ctranslate2 --src_vocab sp-vocab.txt.token --tgt_vocab sp-vocab.txt.token --quantization int8
+ct2-opennmt-tf-converter --model_path run/ --output_dir $exportDir/ctranslate2 --src_vocab sp-vocab.txt.token --tgt_vocab sp-vocab.txt.token --quantization int8
 
 #
 # Run evaluation

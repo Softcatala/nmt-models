@@ -11,26 +11,26 @@ And here the tools that at Softcatalà to serve these models in production: http
 # Models
 Language pair | SC model BLEU | SC Flores101 BLEU | Google BLEU | Meta NLLB200 BLEU | Opus-MT BLEU | Sentences | Download model
 |---|---|---|---|---|---|---|---
-|German-Catalan | 35.8 |28.5 |35.5 |30.7|18.5| 2961962 | [deu-cat-2022-07-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/deu-cat-2022-07-09.zip)
-|Catalan-German | 30.0 |24.5 |32.9 |29.1|15.8| 2961962 | [cat-deu-2022-07-10.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-deu-2022-07-10.zip)
-|English-Catalan | 46.2 |42.2 |46.0 |41.7|29.8| 4499272 | [eng-cat-2022-06-18.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/eng-cat-2022-06-18.zip)
-|Catalan-English | 46.8 |42.4 |47.0 |48.0|29.6| 4499272 | [cat-eng-2022-06-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-eng-2022-06-24.zip)
-|French-Catalan | 41.9 |31.8 |37.3 |33.3|27.2| 2566302 | [fra-cat-2022-06-20.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/fra-cat-2022-06-20.zip)
-|Catalan-French | 41.8 |35.1 |41.7 |39.6|27.9| 2566302 | [cat-fra-2022-06-25.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-fra-2022-06-25.zip)
-|Galician-Catalan | 74.9 |31.5 |36.5 |33.2|N/A| 2710149 | [glg-cat-2022-11-06.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/glg-cat-2022-11-06.zip)
-|Catalan-Galician | 82.7 |32.0 |33.1 |31.7|N/A| 2710149 | [cat-glg-2022-11-06.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-glg-2022-11-06.zip)
-|Italian-Catalan | 40.0 |26.8 |30.6 |27.8|22.0| 2584598 | [ita-cat-2022-06-21.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/ita-cat-2022-06-21.zip)
-|Catalan-Italian | 36.5 |24.6 |27.5 |26.0|19.2| 2584598 | [cat-ita-2022-06-26.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-ita-2022-06-26.zip)
-|Japanese-Catalan | 24.1 |16.9 |23.4 |N/A|N/A| 1974248 | [jpn-cat-2022-06-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/jpn-cat-2022-06-29.zip)
-|Catalan-Japanese | 26.9 |19.5 |32.5 |N/A|N/A| 1974248 | [cat-jpn-2022-07-02.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-jpn-2022-07-02.zip)
-|Dutch-Catalan | 30.7 |20.3 |27.1 |24.8|15.8| 2208538 | [nld-cat-2022-08-01.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/nld-cat-2022-08-01.zip)
-|Catalan-Dutch | 27.8 |18.2 |23.4 |21.8|13.4| 2208538 | [cat-nld-2022-08-01.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-nld-2022-08-01.zip)
-|Occitan-Catalan | 74.8 |31.9 |N/A |36.2|N/A| 2711350 | [oci-cat-2022-11-13.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/oci-cat-2022-11-13.zip)
-|Catalan-Occitan | 78.5 |28.5 |N/A |27.8|N/A| 2711350 | [cat-oci-2022-11-13.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-oci-2022-11-13.zip)
-|Portuguese-Catalan | 41.7 |34.2 |38.7 |34.5|28.1| 2043019 | [por-cat-2022-06-22.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/por-cat-2022-06-22.zip)
-|Catalan-Portuguese | 39.4 |32.4 |40.0 |36.5|27.5| 2043019 | [cat-por-2022-06-28.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-por-2022-06-28.zip)
-|Spanish-Catalan | 89.8 |22.7 |23.6 |25.8|22.5| 7596985 | [spa-cat-2022-06-21.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/spa-cat-2022-06-21.zip)
-|Catalan-Spanish | 88.4 |24.3 |24.2 |25.5|23.2| 7596985 | [cat-spa-2022-06-27.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/cat-spa-2022-06-27.zip)
+|German-Catalan | 34.8 |28.9 |35.5 |30.7|18.5| 3142257 | [deu-cat-2022-11-14.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/deu-cat-2022-11-14.zip)
+|Catalan-German | 28.5 |25.4 |32.9 |29.1|15.8| 3142257 | [cat-deu-2022-11-16.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-deu-2022-11-16.zip)
+|English-Catalan | 46.8 |43.1 |46.0 |41.7|29.8| 4741504 | [eng-cat-2022-11-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eng-cat-2022-11-09.zip)
+|Catalan-English | 46.6 |43.3 |47.0 |48.0|29.6| 4741504 | [cat-eng-2022-11-12.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-eng-2022-11-12.zip)
+|French-Catalan | 41.3 |31.6 |37.3 |33.3|27.2| 2566302 | [fra-cat-2022-11-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/fra-cat-2022-11-09.zip)
+|Catalan-French | 41.4 |35.4 |41.7 |39.6|27.9| 2566302 | [cat-fra-2022-11-14.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-fra-2022-11-14.zip)
+|Galician-Catalan | 74.1 |31.4 |36.5 |33.2|N/A| 2710149 | [glg-cat-2022-11-17.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/glg-cat-2022-11-17.zip)
+|Catalan-Galician | 80.7 |31.9 |33.1 |31.7|N/A| 2710149 | [cat-glg-2022-11-21.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-glg-2022-11-21.zip)
+|Italian-Catalan | 39.7 |26.5 |30.6 |27.8|22.0| 2584598 | [ita-cat-2022-11-11.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/ita-cat-2022-11-11.zip)
+|Catalan-Italian | 36.2 |24.5 |27.5 |26.0|19.2| 2584598 | [cat-ita-2022-11-15.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-ita-2022-11-15.zip)
+|Japanese-Catalan | 24.3 |17.0 |23.4 |N/A|N/A| 1974248 | [jpn-cat-2022-11-18.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/jpn-cat-2022-11-18.zip)
+|Catalan-Japanese | 26.2 |19.8 |32.5 |N/A|N/A| 1974248 | [cat-jpn-2022-11-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-jpn-2022-11-19.zip)
+|Dutch-Catalan | 30.4 |20.3 |27.1 |24.8|15.8| 2208538 | [nld-cat-2022-11-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/nld-cat-2022-11-19.zip)
+|Catalan-Dutch | 27.6 |18.2 |23.4 |21.8|13.4| 2208538 | [cat-nld-2022-11-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-nld-2022-11-19.zip)
+|Occitan-Catalan | 74.9 |32.5 |N/A |36.2|N/A| 2711350 | [oci-cat-2022-11-17.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/oci-cat-2022-11-17.zip)
+|Catalan-Occitan | 78.8 |28.9 |N/A |27.8|N/A| 2711350 | [cat-oci-2022-11-21.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-oci-2022-11-21.zip)
+|Portuguese-Catalan | 41.6 |33.9 |38.7 |34.5|28.1| 2043019 | [por-cat-2022-11-16.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/por-cat-2022-11-16.zip)
+|Catalan-Portuguese | 39.0 |32.3 |40.0 |36.5|27.5| 2043019 | [cat-por-2022-11-18.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-por-2022-11-18.zip)
+|Spanish-Catalan | 88.8 |22.6 |23.6 |25.8|22.5| 7596985 | [spa-cat-2022-11-16.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/spa-cat-2022-11-16.zip)
+|Catalan-Spanish | 87.5 |24.2 |24.2 |25.5|23.2| 7596985 | [cat-spa-2022-11-17.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-spa-2022-11-17.zip)
 
 Legend:
 * *SC Model BLEU* column indicates the Softcatalà models' BLEU score against the corpus test dataset (from train/dev/test)
@@ -46,6 +46,7 @@ Notes:
 * These models are used in production with modest hardware (CPU). As result, these models are a balance between precision and latency. It is possible to further improve BLUE scores by ~+1 BLEU, but at a significant latency cost at inference.
 * BLEU is the most popular metric for evaluating machine translation but also broadly acknowledged that it is not perfect. It's estimated that has a [~80% correlation](https://aclanthology.org/W05-0909.pdf) with human judgment
 * Flores101 has some limitations. It was produced translating from English to the other 100 languages. When you use flores for example to benchmark Catalan - Spanish translations, consider that the Catalan -> Spanish corpus was produced by translating from English to Catalan and from English to Spanish. The resulting Spanish and Catalan translations are different from what a translator will do translating directly from Spanish to Catalan. As a summary, Flores101 is more reliable for benchmarks where English is the source or target language. 
+* Occitan model is based on Gason variant
 
 ## Structure of the models
 

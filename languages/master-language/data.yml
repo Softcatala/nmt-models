@@ -5,13 +5,19 @@ data:
   train_labels_file: tgt-train.txt.token
   eval_features_file: src-val.txt.token
   eval_labels_file: tgt-val.txt.token
-  source_vocabulary: sp-vocab.txt.token
-  target_vocabulary: sp-vocab.txt.token
+  vocabulary: sp-vocab.txt.token
 
 train:
    keep_checkpoint_max: 1
-   max_step: 80000
+   max_step: 150000
 
+eval:
+  scorers: bleu
+  early_stopping:
+    metric: bleu
+    min_improvement: 0.1
+    steps: 3
+   
 # Necessary for better evaluation
 params:
     replace_unknown_target: True
