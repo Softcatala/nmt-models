@@ -23,7 +23,7 @@ def read_configuration():
         exit()
 
     ensure_dots = content.get('ensure_dots', True)
-    augmentation_cap = content.get('augmentation_cap', True)
+    augmentation_cap = content.get('augmentation_cap', 100)
     size_diff_percentage = content.get('size_diff_percentage', 70)
 
     d = {}
@@ -33,6 +33,7 @@ def read_configuration():
     d['ensure_dots'] = ensure_dots
     d['augmentation_cap'] = augmentation_cap
     d['size_diff_percentage'] = size_diff_percentage
+    print(f"augmentation_cap: {augmentation_cap}")
     return d
 
 g_configuration = read_configuration()
@@ -176,6 +177,8 @@ def split_in_six_files(src_filename, tgt_filename):
 
         clean_src = clean_trg = 0
         equal = 0
+        capitalize_cnt = 0
+        capitalize_total = 0
         while True:
 
             src = read_source.readline()
@@ -228,11 +231,15 @@ def split_in_six_files(src_filename, tgt_filename):
             target.write(trg)
 
             # Duplicate corpus in upper case to translate properly uppercase text
-            if augmentation_cap:
+            if capitalize_cnt < augmentation_cap:
                 source.write(src.upper())
                 target.write(trg.upper())
+                capitalize_total += 1
 
             strings = strings + 1
+            capitalize_cnt += 1
+            if capitalize_cnt >= 100:
+                capitalize_cnt = 0
 
     pduplicated = duplicated * 100 / strings
     pdots = dots * 100 / strings
@@ -240,10 +247,14 @@ def split_in_six_files(src_filename, tgt_filename):
     pclean_trg = clean_trg * 100 / strings
     pbad_length = bad_length * 100 / strings
     pequal = equal * 100 / strings
+
     print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
     print(f"Cleaned acute accents. src: {clean_src} ({pclean_src:.2f}%), tgt: {clean_trg} ({pclean_trg:.2f}%)")
     print(f"Empty sentences or diff len too long: {bad_length} ({pbad_length:.2f}%)")
     print(f"Dots: {dots} ({pdots:.2f}%), equal: {equal} ({pequal:.2f}%)")
+
+    pcapitalize_total = capitalize_total * 100 / strings
+    print(f"Strings: {strings}, capitalized {capitalize_total} ({pcapitalize_total:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file, max_lines):
     lines = 0
