@@ -27,17 +27,17 @@ echo "Experiment 1" > results.txt
 cat eng-cat-v1/bleu.txt >> results.txt
 
 cd eng-cat-v2 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 2" > results.txt
+echo "Experiment 2" >> results.txt
 cat eng-cat-v2/bleu.txt >> results.txt
 
-cd eng-cat-v3 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 3" > results.txt
+cd eng-cat-v && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
+echo "Experiment 3" >> results.txt
 cat eng-cat-v3/bleu.txt >> results.txt
 
 cd eng-cat-v5 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 4" > results.txt
+echo "Experiment 4" >> results.txt
 cat eng-cat-v4/bleu.txt >> results.txt
 
 cd eng-cat-v5 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 5" > results.txt
+echo "Experiment 5" >> results.txt
 cat eng-cat-v5/bleu.txt >> results.txt
