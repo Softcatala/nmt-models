@@ -30,11 +30,11 @@ cd eng-cat-v2 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd 
 echo "Experiment 2" >> results.txt
 cat eng-cat-v2/bleu.txt >> results.txt
 
-cd eng-cat-v && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
+cd eng-cat-v3 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
 echo "Experiment 3" >> results.txt
 cat eng-cat-v3/bleu.txt >> results.txt
 
-cd eng-cat-v5 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
+cd eng-cat-v4 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
 echo "Experiment 4" >> results.txt
 cat eng-cat-v4/bleu.txt >> results.txt
 
