@@ -24,14 +24,14 @@ rm eng-cat-v7/voc.sh && cp master-language/voc.sh eng-cat-v7/
 rm eng-cat-v8/voc.sh && cp master-language/voc.sh eng-cat-v8/
 
 echo Setup voc.sh for experiments
-#sed -i 's/50000/10000/g' eng-cat-v1/voc.sh
-#sed -i 's/50000/20000/g' eng-cat-v2/voc.sh
-sed -i 's/50000/30000/g' eng-cat-v3/voc.sh
-sed -i 's/50000/40000/g' eng-cat-v4/voc.sh
-sed -i 's/50000/50000/g' eng-cat-v5/voc.sh
-sed -i 's/50000/60000/g' eng-cat-v6/voc.sh
-sed -i 's/50000/70000/g' eng-cat-v7/voc.sh
-sed -i 's/50000/80000/g' eng-cat-v8/voc.sh
+#sed -i 's/20000/10000/g' eng-cat-v1/voc.sh
+#sed -i 's/20000/20000/g' eng-cat-v2/voc.sh
+sed -i 's/20000/30000/g' eng-cat-v3/voc.sh
+sed -i 's/20000/40000/g' eng-cat-v4/voc.sh
+sed -i 's/20000/50000/g' eng-cat-v5/voc.sh
+sed -i 's/20000/60000/g' eng-cat-v6/voc.sh
+sed -i 's/20000/70000/g' eng-cat-v7/voc.sh
+sed -i 's/20000/80000/g' eng-cat-v8/voc.sh
 
 #export QUICK_PREPROCESSING=1
 #cd eng-cat-v1 &&  ./voc.sh && ./train.sh && ./export.sh && cd ..
