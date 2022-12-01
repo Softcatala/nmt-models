@@ -10,6 +10,7 @@ cp -r eng-cat eng-cat-v4
 cp -r eng-cat eng-cat-v5
 cp -r eng-cat eng-cat-v6
 cp -r eng-cat eng-cat-v7
+cp -r eng-cat eng-cat-v8
 
 echo Copy single voc.sh
 #rm eng-cat-v1/voc.sh && cp master-language/voc.sh eng-cat-v1/
@@ -19,6 +20,7 @@ rm eng-cat-v4/voc.sh && cp master-language/voc.sh eng-cat-v4/
 rm eng-cat-v5/voc.sh && cp master-language/voc.sh eng-cat-v5/
 rm eng-cat-v6/voc.sh && cp master-language/voc.sh eng-cat-v6/
 rm eng-cat-v7/voc.sh && cp master-language/voc.sh eng-cat-v7/
+rm eng-cat-v8/voc.sh && cp master-language/voc.sh eng-cat-v8/
 
 echo Setup voc.sh for experiments
 #sed -i 's/50000/10000/g' eng-cat-v1/voc.sh
@@ -28,6 +30,7 @@ sed -i 's/50000/40000/g' eng-cat-v4/voc.sh
 sed -i 's/50000/50000/g' eng-cat-v5/voc.sh
 sed -i 's/50000/60000/g' eng-cat-v6/voc.sh
 sed -i 's/50000/70000/g' eng-cat-v7/voc.sh
+sed -i 's/50000/80000/g' eng-cat-v8/voc.sh
 
 export QUICK_PREPROCESSING=1
 #cd eng-cat-v1 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
@@ -57,3 +60,7 @@ cat eng-cat-v6/bleu.txt >> results.txt
 cd eng-cat-v7 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
 echo "Experiment 7" >> results.txt
 cat eng-cat-v7/bleu.txt >> results.txt
+
+cd eng-cat-v8 && ./preprocess.sh && ./voc.sh && ./train.sh && ./export.sh && cd ..
+echo "Experiment 8" >> results.txt
+cat eng-cat-v8/bleu.txt >> results.txt
