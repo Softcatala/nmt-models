@@ -1,6 +1,7 @@
 #!/bin/bash
 # Requieres machine with 300GB
 
+# Note: ./prerprocess.sh done before 
 echo Setup experiments
 rm -r -f eng-cat/run/*
 #cp -r eng-cat eng-cat-v1
