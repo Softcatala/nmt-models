@@ -9,7 +9,7 @@ data:
 
 train:
    keep_checkpoint_max: 1
-   max_step: 20000
+   max_step: 150000
 
 eval:
   scorers: bleu
