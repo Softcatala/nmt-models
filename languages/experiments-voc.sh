@@ -43,7 +43,7 @@ sed -i 's/50000/80000/g' eng-cat-v8/voc.sh
 #cat eng-cat-v2/bleu.txt >> results.txt
 
 cd eng-cat-v3 &&  ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 3" >> results.txt
+echo "Experiment 3" > results.txt
 cat eng-cat-v3/bleu.txt >> results.txt
 
 cd eng-cat-v4 &&  ./voc.sh && ./train.sh && ./export.sh && cd ..
