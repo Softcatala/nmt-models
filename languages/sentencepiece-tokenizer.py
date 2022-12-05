@@ -90,7 +90,8 @@ def ingest_file(learner, ingest_file):
 
 def src(vocabulary_size, model, language_pair):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
-                                             keep_vocab=True)
+                                            keep_vocab=True,
+                                            user_defined_symbols="<uu>,<ut>")
     reduced_src = ingest_file(learner, "src-train.txt")
     reduced_tgt = ingest_file(learner, "tgt-train.txt")
 

@@ -132,6 +132,28 @@ def _is_sentence_len_good(src, trg):
 
     return True
 
+def case_tagging(text):
+    cased = ""
+    tagged = False
+    for word in text.split():
+        if word.isupper():
+            tagged = True
+            word = "<uu> " + word.lower()
+        elif len(word) > 1 and word[0:1].isupper() and word[1:].islower():
+            tagged = True
+            word = " <ut>" + word.lower()
+
+        cased += word + " "
+
+    if tagged == False:
+        return text
+
+    cased = cased.rstrip() + "\n"
+   # print("org:" + text)
+#3  print("cased:" + cased)
+
+    return cased
+
 # https://arxiv.org/abs/1907.01279 contains an overview of some of the techniques used here
 def split_in_six_files(src_filename, tgt_filename):
 
@@ -197,6 +219,9 @@ def split_in_six_files(src_filename, tgt_filename):
             if src == trg and len(src) > 50 and len(trg) > 50:
                 equal += 1
                 continue
+            
+            src = case_tagging(src)
+            trg = case_tagging(trg)
 
             pair = src + trg
             if pair in pairs:
@@ -228,9 +253,9 @@ def split_in_six_files(src_filename, tgt_filename):
             target.write(trg)
 
             # Duplicate corpus in upper case to translate properly uppercase text
-            if augmentation_cap:
-                source.write(src.upper())
-                target.write(trg.upper())
+            #if augmentation_cap:
+            #    source.write(src.upper())
+            #    target.write(trg.upper())
 
             strings = strings + 1
 
