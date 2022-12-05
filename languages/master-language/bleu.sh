@@ -17,6 +17,7 @@ then
     pip3 install -r requirements.txt
 fi
 
+ wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/casing/use-models-tools/ctranslate.py
 
 if [ $tgtLanguage = "jpn" ]; then
     tokenizer="--tokenize ja-mecab"
