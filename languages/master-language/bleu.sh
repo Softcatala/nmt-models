@@ -17,7 +17,7 @@ then
     pip3 install -r requirements.txt
 fi
 
- wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/casing/use-models-tools/ctranslate.py
+rm -f ctranslate.py && wget -q https://raw.githubusercontent.com/Softcatala/nmt-softcatala/casing/use-models-tools/ctranslate.py
 
 if [ $tgtLanguage = "jpn" ]; then
     tokenizer="--tokenize ja-mecab"
@@ -25,11 +25,11 @@ fi
 
 
 modelRootDir=exported/
-echo "Test data set" > bleu.txt
-python3 model-to-txt.py -m $srcModelName -f src-test.txt -t predictions-test.txt -x $modelRootDir
-sacrebleu tgt-test.txt $tokenizer -i predictions-test.txt -m bleu chrf --format text >> bleu.txt
+#echo "Test data set" > bleu.txt
+#python3 model-to-txt.py -m $srcModelName -f src-test.txt -t predictions-test.txt -x $modelRootDir
+#sacrebleu tgt-test.txt $tokenizer -i predictions-test.txt -m bleu chrf --format text >> bleu.txt
 
-echo "Flores data set" >> bleu.txt
+echo "Flores data set" > bleu.txt
 python3 model-to-txt.py -m $srcModelName -f flores101.$srcLanguage -t predictions-flores.txt -x $modelRootDir
 sacrebleu $tokenizer flores101.$tgtLanguage -i predictions-flores.txt -m bleu chrf --format text >> bleu.txt
 
