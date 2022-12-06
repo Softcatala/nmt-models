@@ -138,10 +138,10 @@ def case_tagging(text):
     for word in text.split():
         if word.isupper():
             tagged = True
-            word = "<uu> " + word.lower()
+            word = "<uu>" + word.lower()
         elif len(word) > 1 and word[0:1].isupper() and word[1:].islower():
             tagged = True
-            word = "<ut> " + word.lower()
+            word = "<ut>" + word.lower()
 
         cased += word + " "
 
