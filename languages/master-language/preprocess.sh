@@ -1,4 +1,5 @@
-srcModelName=${PWD##*/}
+currentDir=${PWD##*/}
+srcModelName=${currentDir:0:7}
 regex='([a-z]{3})-([a-z]{3})'
 [[ $srcModelName =~ $regex ]]
 srcLanguage=${BASH_REMATCH[1]}
