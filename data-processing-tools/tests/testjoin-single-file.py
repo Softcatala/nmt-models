@@ -94,6 +94,10 @@ class TestJoinSingleFile(unittest.TestCase):
     def test__is_sentence_len_good_diff(self):
         src = "Mai"
         trg = "localized lexeme inflections - short month form||Jun"
+
+        d = {}
+        d['size_diff_percentage'] = 70
+        join_single_file.set_configuration(d)
         self.assertFalse(join_single_file._is_sentence_len_good(src, trg))
 
         src = "All contacts must use Friendica protocols. All other built-in communication protocols disabled."

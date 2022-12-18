@@ -9,6 +9,12 @@ import os
 import datetime
 import unicodedata
 
+g_configuration = None
+
+def set_configuration(dictionary):
+    global g_configuration
+    g_configuration = dictionary
+
 def read_configuration():
 
     with open("corpus.yml", 'r') as stream:
@@ -34,8 +40,6 @@ def read_configuration():
     d['augmentation_cap'] = augmentation_cap
     d['size_diff_percentage'] = size_diff_percentage
     return d
-
-g_configuration = read_configuration()
 
 def file_len(fname):
     with open(fname) as f:
@@ -292,6 +296,7 @@ def main():
 
     print("Joins several corpus and creates a final train, validation and test dataset")
     start_time = datetime.datetime.now()
+    set_configuration(read_configuration())
 
     single_src = 'src.txt'
     single_tgt = 'tgt.txt'
