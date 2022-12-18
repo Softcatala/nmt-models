@@ -136,28 +136,33 @@ def _is_sentence_len_good(src, trg):
 
     return True
 
+# How to split test-val sets based on https://en.wikipedia.org/wiki/Per_mille
+def _get_val_test_split_steps(lines, per_mille_val, per_mille_test):
+    lines_val = round(lines * per_mille_val / 1000)
+    steps_val = round(lines / lines_val)
+
+    lines_test = round(lines * per_mille_test / 1000)
+    steps_test = round(lines / lines_test)
+
+    return steps_val, steps_test
+
 # https://arxiv.org/abs/1907.01279 contains an overview of some of the techniques used here
 def split_in_six_files(src_filename, tgt_filename):
 
     pairs = set()
-    number_validation = 3000
-    number_test = 3007 # number_test != number_validation
-
     strings = 0
     duplicated = 0
 
     print("Split src and tgt files in 6 files for training, text and validation")
 
     total_lines = file_len(src_filename)
-    validation_each = round(total_lines / number_validation)
-    test_each = round(total_lines / number_test)
+    SAMPLE_PER_MILLE_VAL = 1
+    SAMPLE_PER_MILLE_TEST = 1
+    steps_val, steps_test = _get_val_test_split_steps(total_lines, SAMPLE_PER_MILLE_VAL, SAMPLE_PER_MILLE_TEST)
+    clean_src = clean_trg = 0
+    equal = 0
     bad_length = 0
     dots = 0
-
-    if test_each == validation_each:
-        print("test_each ({0}) and validation_each  ({0}) cannot be equal".format(test_each, validation_each))
-        return
-        
 
     ensure_dots = g_configuration['ensure_dots']
     augmentation_cap = g_configuration['augmentation_cap']
@@ -171,15 +176,9 @@ def split_in_six_files(src_filename, tgt_filename):
         open(src_filename, "r") as read_source,\
         open(tgt_filename, "r") as read_target:
 
-
         print("total_lines {0}".format(total_lines))
-        print("number_validation {0}".format(number_validation))
-        print("number_test {0}".format(number_test))
-        print("validation_each {0}".format(validation_each))
-        print("test_each {0}".format(test_each))
 
-        clean_src = clean_trg = 0
-        equal = 0
+        cnt_steps_val = cnt_steps_test = clean_src = clean_trg = 0
         while True:
 
             src = read_source.readline()
@@ -215,12 +214,14 @@ def split_in_six_files(src_filename, tgt_filename):
             if cleaned_trg:
                 clean_trg = clean_trg + 1
 
-            if strings % validation_each == 0:
+            if cnt_steps_val >= steps_val:
                 source = source_val
                 target = target_val
-            elif strings % test_each == 0:
+                cnt_steps_val = 0
+            elif cnt_steps_test >= steps_test:
                 source = source_test
                 target = target_test
+                cnt_steps_test = 0
             else:
                 source = source_train
                 target = target_train
@@ -236,7 +237,9 @@ def split_in_six_files(src_filename, tgt_filename):
                 source.write(src.upper())
                 target.write(trg.upper())
 
-            strings = strings + 1
+            strings += 1
+            cnt_steps_val += 1
+            cnt_steps_test += 1
 
     pduplicated = duplicated * 100 / strings
     pdots = dots * 100 / strings

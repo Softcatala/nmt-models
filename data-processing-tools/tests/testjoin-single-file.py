@@ -113,6 +113,10 @@ class TestJoinSingleFile(unittest.TestCase):
         trg = "Tots els contactes"
         self.assertTrue(join_single_file._is_sentence_len_good(src, trg))
 
+    def test__get_val_test_split_lines(self):
+        steps_val, steps_test = join_single_file._get_val_test_split_steps(lines = 1000000, per_mille_val = 1, per_mille_test = 2)
+        self.assertEquals(1000, steps_val)
+        self.assertEquals(500, steps_test)
 
 if __name__ == '__main__':
     unittest.main()
