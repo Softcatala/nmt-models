@@ -35,18 +35,8 @@ def read_parameters():
         help='Size of the vocabulary'
     )
 
-    parser.add_option(
-        '-l',
-        '--language_pair',
-        type='string',
-        action='store',
-        default='',
-        dest='language_pair',
-        help="Language pair for flores dataset"
-    )
-
     (options, args) = parser.parse_args()
-    return options.vocabulary_size, options.language_pair
+    return options.vocabulary_size
 
 def _get_file_len(fname):
     with open(fname) as f:
@@ -88,7 +78,7 @@ def ingest_file(learner, ingest_file):
     learner.ingest_file(reduced_file)
     return reduced_file
 
-def src(vocabulary_size, model, language_pair):
+def src(vocabulary_size, model):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
                                              keep_vocab=True)
     reduced_src = ingest_file(learner, "src-train.txt")
@@ -96,19 +86,10 @@ def src(vocabulary_size, model, language_pair):
 
     tokenizer = learner.learn(model, verbose=True)
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
-    tokens = tokenizer.tokenize_file("src-test.txt", "src-test.txt.token")
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
 
     tokens = tokenizer.tokenize_file("tgt-train.txt", "tgt-train.txt.token")
-    tokens = tokenizer.tokenize_file("tgt-test.txt", "tgt-test.txt.token")
     tokens = tokenizer.tokenize_file("tgt-val.txt", "tgt-val.txt.token")
-
-    source_language, target_language = language_pair.split("-")
-    flores_src = f"flores101.{source_language}"
-    flores_tgt = f"flores101.{target_language}"
-
-    tokens = tokenizer.tokenize_file(flores_src, flores_src + ".token")
-    tokens = tokenizer.tokenize_file(flores_tgt, flores_tgt + ".token")
 
     os.remove(reduced_src)
     os.remove(reduced_tgt)
@@ -116,11 +97,11 @@ def src(vocabulary_size, model, language_pair):
 def main():
 
     print("Creates tokenized output corpus using SentencePiece")
-    vocabulary_size, language_pair = read_parameters()
+    vocabulary_size = read_parameters()
     model_name = 'sp_m'
     print("Vocabulary size {0}".format(vocabulary_size))
 
-    src(vocabulary_size, model_name, language_pair)
+    src(vocabulary_size, model_name)
 
 if __name__ == "__main__":
     main()
