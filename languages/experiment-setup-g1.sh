@@ -18,15 +18,15 @@ cd ..
 
 echo Setup experiment e2
 cd spa-cat-e2
-./preprocess.sh
 cp corpus-e2.yml corpus.yml
+./preprocess.sh
 cd ..
 
 echo Setup experiment e3
 cd spa-cat-e3
-./preprocess.sh
-cp ../../spa-cat/paracrawl.es-ca.ca.* corpus-raw/
+cp ../../../spa-cat/paracrawl.es-ca.ca.* corpus-raw/
 cp corpus-e3.yml corpus.yml 
+./preprocess.sh
 cd ..
 
 
