@@ -24,12 +24,13 @@ cd ..
 
 echo Setup experiment e3
 cd spa-cat-e3
-cp ../../../spa-cat/paracrawl.es-ca.ca.* corpus-raw/
+cp ../../../spa-cat/paracrawl.es-ca.* corpus-raw/
 cp corpus-e3.yml corpus.yml 
 ./preprocess.sh
 cd ..
 
 echo "Setup opposite direction"
+
 
 declare -a arr=("spa-cat-e1" "spa-cat-e2" "spa-cat-e3")
 
