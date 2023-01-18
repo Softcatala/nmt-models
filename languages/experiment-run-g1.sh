@@ -2,15 +2,15 @@
 
 echo Run experiments
 
-cd eng-cat-e4 && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 4" > results-g2.txt
-cat eng-cat-e4/bleu.txt >> results-g2.txt
+cd spa-cat-e1 && ./voc.sh && ./train.sh && ./export.sh && cd ..
+echo "Experiment 1" > results-g2-spa-cat.txt
+cat spa-cat-e1/bleu.txt >> results-g2-spa-cat.txt
 
-cd eng-cat-e5 && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 5" >> results-g2.txt
-cat eng-cat-e5/bleu.txt >> results-g2.txt
+cd spa-cat-e2 && ./voc.sh && ./train.sh && ./export.sh && cd ..
+echo "Experiment 2" >> results-g2-spa-cat.txt
+cat spa-cat-e2/bleu.txt >> results-g2-spa-cat.txt
 
-cd eng-cat-e6 && ./voc.sh && ./train.sh && ./export.sh && cd ..
-echo "Experiment 6" >> results-g2.txt
-cat eng-cat-e6/bleu.txt >> results-g2.txt
+cd spa-cat-e3 && ./voc.sh && ./train.sh && ./export.sh && cd ..
+echo "Experiment 3" >> results-g2-spa-cat.txt
+cat spa-cat-e3/bleu.txt >> results-g2-spa-cat.txt
 

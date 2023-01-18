@@ -29,5 +29,26 @@ cp corpus-e3.yml corpus.yml
 ./preprocess.sh
 cd ..
 
+echo "Setup opposite direction"
+
+declare -a arr=("spa-cat-e1" "spa-cat-e2" "spa-cat-e3")
+
+for dirname in "${arr[@]}"; do
+    echo Processing $dirname
+
+    if [ ! -d $dirname ]; then
+        mkdir $dirname
+    fi
+
+    pushd $dirname
+
+    cp ../master-language/* .
+    ./copy-corpus.sh
+    rm -r -f run/
+    ./train.sh
+    ./export.sh
+    popd
+done
+
 
 echo "Setup finished"
