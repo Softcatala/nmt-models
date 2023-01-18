@@ -52,4 +52,6 @@ cp corpus/$srcModelName/tgt-val.txt .
 cp corpus/$srcModelName/src-val.txt .
 cp ../../evaluate/flores101.$srcLanguage .
 cp ../../evaluate/flores101.$tgtLanguage .
+cp ../../evaluate/newstest2019.$srcLanguage .
+cp ../../evaluate/newstest2019.$tgtLanguage .
 
