@@ -1,0 +1,6 @@
+source_files:
+    - corpus-raw/paracrawl.es-ca.ca.es
+
+target_files:
+    - corpus-raw/paracrawl.es-ca.ca.ca
+

@@ -1,0 +1,13 @@
+source_files:
+    - corpus-raw/open-source-es-ca.es
+    - corpus-raw/europarl.es-ca.es
+    - corpus-raw/wikimatrix.es-ca.es
+    - corpus-raw/TildeMODEL.es-ca.es
+    - corpus-raw/dogc-es-ca.es
+
+target_files:
+    - corpus-raw/open-source-es-ca.ca
+    - corpus-raw/europarl.es-ca.ca
+    - corpus-raw/wikimatrix.es-ca.ca
+    - corpus-raw/TildeMODEL.es-ca.ca
+    - corpus-raw/dogc-es-ca.ca
