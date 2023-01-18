@@ -33,6 +33,10 @@ echo "Flores data set" >> bleu.txt
 python3 model-to-txt.py -m $srcModelName -f flores101.$srcLanguage -t predictions-flores.txt -x $modelRootDir
 sacrebleu $tokenizer flores101.$tgtLanguage -i predictions-flores.txt -m bleu chrf --format text >> bleu.txt
 
+echo "News data set" >> bleu.txt .eng.txt
+python3 model-to-txt.py -m $srcModelName -f newstest2019.$srcLanguage -t predictions-newstext2019.txt -x $modelRootDir
+sacrebleu $tokenizer newstest2019.$tgtLanguage -i predictions-newstext2019.txt -m bleu chrf --format text >> bleu.txt
+
 cat bleu.txt
 
 
