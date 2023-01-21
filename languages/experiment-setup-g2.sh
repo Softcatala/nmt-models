@@ -8,7 +8,7 @@ cp -r spa-cat spa-cat-e4
 
 
 echo Setup experiment e4
-cd spa-cat-e3
+cd spa-cat-e4
 cp ../../../spa-cat/paracrawl.es-ca.* corpus-raw/
 cp corpus-e4.yml corpus.yml 
 ./preprocess.sh
