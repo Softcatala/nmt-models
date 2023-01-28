@@ -9,10 +9,8 @@ src=$tgtLanguage-$srcLanguage
 # Copy from xxx-cat and invert order for cat-xxx
 cp ../$src/src-train.txt.token tgt-train.txt.token
 cp ../$src/src-val.txt.token tgt-val.txt.token
-cp ../$src/src-test.txt.token tgt-test.txt.token
 cp ../$src/tgt-train.txt.token src-train.txt.token
 cp ../$src/tgt-val.txt.token src-val.txt.token
-cp ../$src/tgt-test.txt.token src-test.txt.token
 
 # Used for evaluation & metadata
 cp ../$src/src-test.txt tgt-test.txt
