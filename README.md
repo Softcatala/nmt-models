@@ -101,3 +101,39 @@ translated = translator.translate_batch([tokenized[0]])
 print(tokenizer.detokenize(translated[0][0]['tokens']))
 Hola món!
 ```
+# Training the models
+
+In order to train models you should have a GPU.
+
+## Training in a machine
+
+First you need to install the necessary packages:
+
+```shell
+
+make install
+```
+
+After this, you download be all the corpuses:
+
+
+```shell
+
+make get-corpus
+```
+
+To train the English - Catalan model type:
+
+```shell
+
+make train-eng-cat
+```
+
+## Training using a Jupyter notebook
+
+We recommend using [Kaggle](https://www.kaggle.com/) which provides [Jupyter notebooks](https://www.kaggle.com/) with GPU access.
+
+We have a [Jupyter notebook](https://github.com/Softcatala/nmt-models/tree/doc/notebook) which allows to trains simple models to learn how to use this toolset.
+
+
+
