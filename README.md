@@ -133,7 +133,7 @@ make train-eng-cat
 
 We recommend using [Kaggle](https://www.kaggle.com/) which provides [Jupyter notebooks](https://www.kaggle.com/) with GPU access.
 
-We have a [Jupyter notebook](https://github.com/Softcatala/nmt-models/tree/doc/notebook) which allows to trains simple models to learn how to use this toolset.
+We have a [Jupyter notebook](https://github.com/Softcatala/nmt-models/tree/master/notebook) which allows to trains simple models to learn how to use this toolset.
 
 
 
