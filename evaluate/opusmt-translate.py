@@ -49,7 +49,7 @@ def save_json(scores):
 
 
 def main():
-    print("Translates Flores101 datasets using HuggingFace opus-mt models")
+    print("Translates flores200 datasets using HuggingFace opus-mt models")
 
     pair_languages = {
         "fr-ca" : ["fra", "cat"],
@@ -85,8 +85,8 @@ def main():
         tokenizer = MarianTokenizer.from_pretrained(model_name)
         model = MarianMTModel.from_pretrained(model_name)
 
-        hypotesis_file = f"opusmt/flores101-{source_language}-{target_language}.{target_language}"
-        input_file = f"flores101.{source_language}"
+        hypotesis_file = f"opusmt/flores200-{source_language}-{target_language}.{target_language}"
+        input_file = f"flores200.{source_language}"
 
 #        print(f"hypo {hypotesis_file}")
 #        print(f"input_file {input_file}")
@@ -107,7 +107,7 @@ def main():
                     t = str(t[0])
                     target.write(t + "\n")
 
-        reference_file = f"flores101.{target_language}"
+        reference_file = f"flores200.{target_language}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
         blue_scores[f'{source_language}-{target_language}'] = sacrebleu
         print(f"'{source_language}-{target_language}', BLEU: '{sacrebleu}'")

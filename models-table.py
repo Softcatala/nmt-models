@@ -187,7 +187,7 @@ def main():
 
     cnt_models = 0
     with open("table.md", "w") as table_md, open("table.csv", "w") as table_cvs:
-        head = "Language pair | SC model BLEU | SC Flores101 BLEU | Google BLEU | Meta NLLB200 BLEU | Opus-MT BLEU | Sentences | Download model"
+        head = "Language pair | SC model BLEU | SC Flores200 BLEU | Google BLEU | Meta NLLB200 BLEU | Opus-MT BLEU | Sentences | Download model"
         table_md.write(f"{head}\n")
         table_cvs.write("{0}\n".format(head.replace("|",",")))
         table_md.write("|---|---|---|---|---|---|---|---\n")

@@ -62,7 +62,7 @@ def _translate(tokenizer, translator, src):
     return translated
     
 def main():
-    print("Translates Flores101 datasets using HuggingFace Facebook nllb200 models")
+    print("Translates flores200 datasets using HuggingFace Facebook nllb200 models")
 
     pair_languages = {
         "en-ca" : ["eng", "cat"],
@@ -76,9 +76,9 @@ def main():
         target_language = pair_languages[pair_language][1]
         model_name = f"mt-aina-{pair_language}"
 
-        hypotesis_file = f"mt-aina/flores101-{model_name}-{source_language}-{target_language}.{target_language}"
+        hypotesis_file = f"mt-aina/flores200-{model_name}-{source_language}-{target_language}.{target_language}"
         print(hypotesis_file)
-        input_file = f"flores101.{source_language}"
+        input_file = f"flores200.{source_language}"
 
         model_dir = snapshot_download(repo_id=f"projecte-aina/{model_name}", revision="main")
         tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = model_dir + "/spm.model")
@@ -104,7 +104,7 @@ def main():
                         print(cnt)
                     
 
-        reference_file = f"flores101.{target_language}"
+        reference_file = f"flores200.{target_language}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
         blue_scores[f'{source_language}-{target_language}'] = sacrebleu
         print(f"'{source_language}-{target_language}', BLEU: '{sacrebleu}'")

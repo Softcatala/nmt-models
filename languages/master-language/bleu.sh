@@ -30,8 +30,8 @@ python3 model-to-txt.py -m $srcModelName -f src-test.txt -t predictions-test.txt
 sacrebleu tgt-test.txt $tokenizer -i predictions-test.txt -m bleu chrf --format text >> bleu.txt
 
 echo "Flores data set" >> bleu.txt
-python3 model-to-txt.py -m $srcModelName -f flores101.$srcLanguage -t predictions-flores.txt -x $modelRootDir
-sacrebleu $tokenizer flores101.$tgtLanguage -i predictions-flores.txt -m bleu chrf --format text >> bleu.txt
+python3 model-to-txt.py -m $srcModelName -f flores200.$srcLanguage -t predictions-flores.txt -x $modelRootDir
+sacrebleu $tokenizer flores200.$tgtLanguage -i predictions-flores.txt -m bleu chrf --format text >> bleu.txt
 
 cat bleu.txt
 

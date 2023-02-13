@@ -123,7 +123,7 @@ def read_parameters():
 
 
 def main():
-    print("Translates Flores101 datasets using Google Translate")
+    print("Translates flores200 datasets using Google Translate")
     
     
     api_key = read_parameters()
@@ -169,8 +169,8 @@ def main():
 #        print(f"source_language: {source_language}")
 #        print(f"target_language: {target_language}")
 
-        hypotesis_file = f"google-translate/flores101-{source_language}-{target_language}.{target_language}"
-        input_file = f"flores101.{source_language}"
+        hypotesis_file = f"google-translate/flores200-{source_language}-{target_language}.{target_language}"
+        input_file = f"flores200.{source_language}"
 
         print(f"hypo {hypotesis_file}")
         print(f"input_file {input_file}")
@@ -181,7 +181,7 @@ def main():
             translate_google(input_file, hypotesis_file, api_key, f"{pair_language}")
             
 
-        reference_file = f"flores101.{target_language}"
+        reference_file = f"flores200.{target_language}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file, target_language)
         blue_scores[f'{source_language}-{target_language}'] = sacrebleu
         print(f"'{source_language}-{target_language}', BLEU: '{sacrebleu}'")
