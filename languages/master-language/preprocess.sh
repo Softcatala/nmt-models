@@ -29,9 +29,6 @@ else
     cp tgt-test.txt corpus/$srcModelName/tgt-test.txt
 
 fi
-cp tgt-train.txt corpus/$srcModelName/tgt-train.txt
-cp tgt-val.txt corpus/$srcModelName/tgt-val.txt
-cp tgt-test.txt corpus/$srcModelName/tgt-test.txt
 
 # Prepare corpus in subdir
 mkdir -p corpus/$tgtModelName
