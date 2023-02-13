@@ -8,6 +8,7 @@ import yaml
 import os
 import datetime
 import unicodedata
+from optparse import OptionParser
 
 g_configuration = None
 
@@ -146,8 +147,12 @@ def _get_val_test_split_steps(lines, per_mille_val, per_mille_test):
 
     return steps_val, steps_test
 
+def _create_dir_if_does_exist(directory):
+    if not os.path.exists(directory):
+       os.makedirs(directory)
+
 # https://arxiv.org/abs/1907.01279 contains an overview of some of the techniques used here
-def split_in_six_files(src_filename, tgt_filename):
+def split_in_six_files(src_filename, tgt_filename, directory, source_lang, target_lang):
 
     pairs = set()
     strings = 0
@@ -166,13 +171,24 @@ def split_in_six_files(src_filename, tgt_filename):
 
     ensure_dots = g_configuration['ensure_dots']
     augmentation_cap = g_configuration['augmentation_cap']
+
+    src_dir = os.path.join(directory, f"{source_lang}-{target_lang}")
+    tgt_dir = os.path.join(directory, f"{target_lang}-{source_lang}")
+    _create_dir_if_does_exist(src_dir)
+    _create_dir_if_does_exist(tgt_dir)
         
-    with open("src-val.txt", "w") as source_val,\
-        open("tgt-val.txt", "w") as target_val,\
-        open("src-test.txt", "w") as source_test,\
-        open("tgt-test.txt", "w") as target_test,\
-        open("src-train.txt", "w") as source_train,\
-        open("tgt-train.txt", "w") as target_train,\
+    with open(os.path.join(src_dir, "src-val.txt"), "w") as src_source_val,\
+        open(os.path.join(src_dir, "tgt-val.txt"), "w") as src_target_val,\
+        open(os.path.join(src_dir, "src-test.txt"), "w") as src_source_test,\
+        open(os.path.join(src_dir, "tgt-test.txt"), "w") as src_target_test,\
+        open(os.path.join(src_dir, "src-train.txt"), "w") as src_source_train,\
+        open(os.path.join(src_dir, "tgt-train.txt"), "w") as src_target_train,\
+        open(os.path.join(tgt_dir, "src-val.txt"), "w") as tgt_source_val,\
+        open(os.path.join(tgt_dir, "tgt-val.txt"), "w") as tgt_target_val,\
+        open(os.path.join(tgt_dir, "src-test.txt"), "w") as tgt_source_test,\
+        open(os.path.join(tgt_dir, "tgt-test.txt"), "w") as tgt_target_test,\
+        open(os.path.join(tgt_dir, "src-train.txt"), "w") as tgt_source_train,\
+        open(os.path.join(tgt_dir, "tgt-train.txt"), "w") as tgt_target_train,\
         open(src_filename, "r") as read_source,\
         open(tgt_filename, "r") as read_target:
 
@@ -215,27 +231,37 @@ def split_in_six_files(src_filename, tgt_filename):
                 clean_trg = clean_trg + 1
 
             if cnt_steps_val >= steps_val:
-                source = source_val
-                target = target_val
+                src_source = src_source_val
+                src_target = src_target_val
+                tgt_source = tgt_source_val
+                tgt_target = tgt_target_val
                 cnt_steps_val = 0
             elif cnt_steps_test >= steps_test:
-                source = source_test
-                target = target_test
+                src_source = src_source_test
+                src_target = src_target_test
+                tgt_source = tgt_source_test
+                tgt_target = tgt_target_test
                 cnt_steps_test = 0
             else:
-                source = source_train
-                target = target_train
+                src_source = src_source_train
+                src_target = src_target_train
+                tgt_source = tgt_source_train
+                tgt_target = tgt_target_train
 
             if ensure_dots:
                 src, trg, dots = _process_dot(src, trg, dots)
 
-            source.write(src)
-            target.write(trg)
+            src_source.write(src)
+            src_target.write(trg)
+            tgt_source.write(trg)
+            tgt_target.write(src)
 
             # Duplicate corpus in upper case to translate properly uppercase text
             if augmentation_cap:
-                source.write(src.upper())
-                target.write(trg.upper())
+                src_source.write(src.upper())
+                src_target.write(trg.upper())
+                tgt_source.write(trg.upper())
+                tgt_target.write(src.upper())
 
             strings += 1
             cnt_steps_val += 1
@@ -295,16 +321,62 @@ def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
     if src_lines != trg_lines:
         raise Exception(f"Source and target corpus have different lengths.")
 
+def read_parameters():
+    parser = OptionParser()
+
+    parser.add_option(
+        '-o',
+        '--output',
+        type='string',
+        action='store',
+        default=None,
+        dest='directory',
+        help="Output directory"
+    )
+
+    parser.add_option(
+        '-s',
+        '--source',
+        type='string',
+        action='store',
+        default=None,
+        dest='source',
+        help="Name of the source language"
+    )
+
+    parser.add_option(
+        '-t',
+        '--target',
+        type='string',
+        action='store',
+        default=None,
+        dest='target',
+        help="Name of the target language"
+    )
+
+    (options, args) = parser.parse_args()
+    if options.source is None:
+        parser.error('No source language given')
+
+    if options.target is None:
+        parser.error('No target language given')
+
+    if options.directory is None:
+        parser.error('No output directory given')
+    
+    return options.directory, options.source, options.target
+
 def main():
 
-    print("Joins several corpus and creates a final train, validation and test dataset")
+    print("Joins several corpus and creates a final train, validation and test dataset for both language pairs")
     start_time = datetime.datetime.now()
+    directory, source_lang, target_lang = read_parameters()
     set_configuration(read_configuration())
 
     single_src = 'src.txt'
     single_tgt = 'tgt.txt'
     join_multiple_sources_and_target_into_two_files(single_src, single_tgt)
-    split_in_six_files(single_src, single_tgt)
+    split_in_six_files(single_src, single_tgt, directory, source_lang, target_lang)
     os.remove(single_src)
     os.remove(single_tgt)
     s = 'Time used: {0}'.format(datetime.datetime.now() - start_time)
