@@ -19,7 +19,6 @@ if [[ -z "${QUICK_PREPROCESSING}" ]]; then
         file="corpus"/$srcModelName/$split
         filebak=$file".bak"
         cp $file $filebak
-        echo "python3 $modificaIEC $filebak $file"
         python3 $modificaIEC $filebak $file
     done
 fi

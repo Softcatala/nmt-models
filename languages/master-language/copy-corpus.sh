@@ -5,23 +5,20 @@ srcLanguage=${BASH_REMATCH[1]}
 tgtLanguage=${BASH_REMATCH[2]}
 
 src=$tgtLanguage-$srcLanguage
+tgt=$srcLanguage-$tgtLanguage
 
-# Copy from xxx-cat and invert order for cat-xxx
-cp ../$src/src-train.txt.token tgt-train.txt.token
-cp ../$src/src-val.txt.token tgt-val.txt.token
-cp ../$src/tgt-train.txt.token src-train.txt.token
-cp ../$src/tgt-val.txt.token src-val.txt.token
+# Training
+cp ../$src/corpus/$tgt/src-train.txt .
+cp ../$src/corpus/$tgt/tgt-train.txt .
+cp ../$src/corpus/$tgt/src-val.txt .
+cp ../$src/corpus/$tgt/tgt-val.txt .
 
 # Used for evaluation & metadata
-cp ../$src/src-test.txt tgt-test.txt
-cp ../$src/tgt-test.txt src-test.txt
-cp ../$src/src-train.txt tgt-train.txt
-cp ../$src/tgt-train.txt src-train.txt
-
-
+cp ../$src/corpus/$tgt/src-test.txt .
+cp ../$src/corpus/$tgt/tgt-test.txt .
 cp ../$src/sp-vocab.txt.token .
 cp ../$src/sp_m.model .
 cp ../$src/flores* .
- 
 
+python3 ../sentencepiece-tokenizer.py
 

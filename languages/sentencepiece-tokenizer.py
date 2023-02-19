@@ -35,8 +35,17 @@ def read_parameters():
         help='Size of the vocabulary'
     )
 
+    parser.add_option(
+        '-c',
+        '--create_model',
+        action='store_true',
+        default='False',
+        dest='create_model',
+        help='Create tokenizer model'
+    )
+
     (options, args) = parser.parse_args()
-    return options.vocabulary_size
+    return options.vocabulary_size, options.create_model
 
 def _get_file_len(fname):
     with open(fname) as f:
@@ -77,31 +86,39 @@ def ingest_file(learner, ingest_file):
 
     learner.ingest_file(reduced_file)
     return reduced_file
-
-def src(vocabulary_size, model):
+    
+def create_model(vocabulary_size, model_name):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
                                              keep_vocab=True)
     reduced_src = ingest_file(learner, "src-train.txt")
     reduced_tgt = ingest_file(learner, "tgt-train.txt")
+    tokenizer = learner.learn(model_name, verbose=True)
 
-    tokenizer = learner.learn(model, verbose=True)
+    os.remove(reduced_src)
+    os.remove(reduced_tgt)
+    return tokenizer
+
+def tokenize_files(tokenizer):
+
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
 
     tokens = tokenizer.tokenize_file("tgt-train.txt", "tgt-train.txt.token")
     tokens = tokenizer.tokenize_file("tgt-val.txt", "tgt-val.txt.token")
 
-    os.remove(reduced_src)
-    os.remove(reduced_tgt)
 
 def main():
 
     print("Creates tokenized output corpus using SentencePiece")
-    vocabulary_size = read_parameters()
+    vocabulary_size, _create_model = read_parameters()
     model_name = 'sp_m'
-    print("Vocabulary size {0}".format(vocabulary_size))
+    if _create_model is True:
+        print("Vocabulary size {0}".format(vocabulary_size))
+        tokenizer = create_model(vocabulary_size, model_name)
+    else:
+        tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path = f"{model_name}.model")
 
-    src(vocabulary_size, model_name)
+    tokenize_files(tokenizer)
 
 if __name__ == "__main__":
     main()

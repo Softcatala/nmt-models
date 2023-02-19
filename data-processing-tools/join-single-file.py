@@ -16,6 +16,15 @@ def set_configuration(dictionary):
     global g_configuration
     g_configuration = dictionary
 
+# In src-tgt pair (jpn-cat), tgt is always 'cat' and tgt-src (e.g. cat-jpn) pair src is always 'cat'
+#
+# 0 - Disabled
+AUGMENTATION_CAP_DISABLED=0
+# 1 - Generate a src and tgt sentences in upper case for both 'src-tgt' (e.g. eng-cat) and 'tgt-src' (e.g. cat-eng) language pairs
+AUGMENTATION_CAP_BOTH_LANGUAGE_PAIRS=1
+# 2 - Generate a src in upper case with the same target only for 'tgt-src' language pair (e.g. cat-jpn)
+AUGMENTATION_CAP_FOR_SECOND_LANGUAGE_PAIR=2
+
 def read_configuration():
 
     with open("corpus.yml", 'r') as stream:
@@ -30,7 +39,7 @@ def read_configuration():
         exit()
 
     ensure_dots = content.get('ensure_dots', True)
-    augmentation_cap = content.get('augmentation_cap', True)
+    augmentation_cap = content.get('augmentation_cap', 1)
     size_diff_percentage = content.get('size_diff_percentage', 70)
 
     d = {}
@@ -257,11 +266,14 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
             tgt_target.write(src)
 
             # Duplicate corpus in upper case to translate properly uppercase text
-            if augmentation_cap:
+            if augmentation_cap == AUGMENTATION_CAP_BOTH_LANGUAGE_PAIRS:
                 src_source.write(src.upper())
                 src_target.write(trg.upper())
                 tgt_source.write(trg.upper())
                 tgt_target.write(src.upper())
+            elif augmentation_cap == AUGMENTATION_CAP_FOR_SECOND_LANGUAGE_PAIR:
+                tgt_source.write(trg.upper())
+                tgt_target.write(src)
 
             strings += 1
             cnt_steps_val += 1

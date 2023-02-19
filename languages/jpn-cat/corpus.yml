@@ -23,5 +23,5 @@ target_files:
     - corpus-raw/ted2020.ca-ja.ca
 
 ensure_dots: False
-augmentation_cap: False
+augmentation_cap: 2
 size_diff_percentage: 0
