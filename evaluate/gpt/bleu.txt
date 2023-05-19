@@ -1,0 +1,6 @@
+English - Catalan
+  BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.3.1 = 42.6 69.8/48.8/36.0/26.9 (BP = 1.000 ratio = 1.008 hyp_len = 27521 ref_len = 27304)
+chrF2|nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.3.1 = 66.9
+Catalan - English
+  BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.3.1 = 42.0 68.0/47.8/35.5/27.1 (BP = 1.000 ratio = 1.120 hyp_len = 27682 ref_len = 24721)
+chrF2|nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.3.1 = 70.3
