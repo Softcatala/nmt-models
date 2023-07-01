@@ -2,7 +2,7 @@ source_files:
     - corpus-raw/europarl.ca-sv.sv
     - corpus-raw/GNOME.ca-sv.sv
     - corpus-raw/KDE4.ca-sv.sv
-    - corpus-raw/TED2020.ca-sv.sv
+    - corpus-raw/TED2020.es-sv.sv
     - corpus-raw/ELRC-4153-NTEU-TierA.ca-sv.1-2800000.sv
 
 target_files:
