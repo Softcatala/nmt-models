@@ -1,0 +1,15 @@
+source_files:
+    - corpus-raw/europarl.ca-sv.sv
+    - corpus-raw/GNOME.ca-sv.sv
+    - corpus-raw/KDE4.ca-sv.sv
+    - corpus-raw/TED2020.ca-sv.sv
+
+target_files:
+    - corpus-raw/europarl.ca-sv.ca
+    - corpus-raw/GNOME.ca-sv.ca
+    - corpus-raw/KDE4.ca-sv.ca
+    - corpus-raw/TED2020.ca-sv.ca
+    
+    
+     
+
