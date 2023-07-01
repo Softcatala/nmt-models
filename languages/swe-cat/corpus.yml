@@ -12,6 +12,4 @@ target_files:
     - corpus-raw/TED2020.ca-sv.ca
     - corpus-raw/ELRC-4153-NTEU-TierA.ca-sv.1-2800000.ca
     
-    
-     
-
+max_lines: 2000000
