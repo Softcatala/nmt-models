@@ -160,6 +160,9 @@ def main():
 
         "gl-ca" : ["glg", "cat"],
         "ca-gl" : ["cat", "glg"],
+
+        "sv-ca" : ["swe", "cat"],
+        "ca-sv" : ["cat", "swe"],
     }
 
     blue_scores = {}
