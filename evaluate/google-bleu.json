@@ -1,4 +1,22 @@
 {
+    "fra-cat": "37.3",
+    "cat-fra": "41.7",
+    "spa-cat": "23.6",
+    "cat-spa": "24.2",
+    "ita-cat": "30.6",
+    "cat-ita": "27.5",
+    "nld-cat": "27.1",
+    "cat-nld": "23.4",
+    "eng-cat": "46.0",
+    "cat-eng": "47.0",
+    "deu-cat": "35.5",
+    "cat-deu": "32.9",
+    "por-cat": "38.7",
+    "cat-por": "40.0",
+    "jpn-cat": "23.4",
+    "cat-jpn": "32.5",
+    "glg-cat": "36.5",
+    "cat-glg": "33.1",
     "swe-cat": "37.4",
     "cat-swe": "36.1"
 }
