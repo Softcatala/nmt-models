@@ -133,34 +133,6 @@ def main():
         exit()
 
     pair_languages = {
-       
-        "fr-ca" : ["fra", "cat"],
-        "ca-fr" : ["cat", "fra"],
-
-        "es-ca" : ["spa", "cat"],
-        "ca-es" : ["cat", "spa"],
-
-        "it-ca" : ["ita", "cat"],
-        "ca-it" : ["cat", "ita"],
-
-        "nl-ca" : ["nld", "cat"],
-        "ca-nl" : ["cat", "nld"],
-
-        "en-ca" : ["eng", "cat"],
-        "ca-en" : ["cat", "eng"],
-
-        "de-ca" : ["deu", "cat"],
-         "ca-de" : ["cat", "deu"],
-
-        "pt-ca" : ["por", "cat"],
-        "ca-pt" : ["cat", "por"],
-
-        "jpn-ca" : ["jpn", "cat"],
-        "ca-jpn" : ["cat", "jpn"],
-
-        "gl-ca" : ["glg", "cat"],
-        "ca-gl" : ["cat", "glg"],
-
         "sv-ca" : ["swe", "cat"],
         "ca-sv" : ["cat", "swe"],
     }
