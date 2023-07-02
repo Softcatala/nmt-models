@@ -204,14 +204,10 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
         print("total_lines {0}".format(total_lines))
 
         cnt_steps_val = cnt_steps_test = clean_src = clean_trg = 0
-       
         while True:
-            debug = False
+
             src = read_source.readline()
             trg = read_target.readline()
-            
-            if 'DO L 22 de 27.1.2000, p. 65' in trg:
-                debug = True
 
             if not (src and trg):
                 break
@@ -225,6 +221,7 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
 
             src, cleaned_src = _normalize_string_src(src)
             trg, cleaned_trg = _normalize_string_trg(trg)
+
             if src == trg and len(src) > 50 and len(trg) > 50:
                 equal += 1
                 continue
@@ -267,16 +264,6 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
             src_target.write(trg)
             tgt_source.write(trg)
             tgt_target.write(src)
-            
-            if trg.count("\r") > 1:
-                print(strings)
-                print(trg)
-
-            if trg.count("\n") > 1:
-                print(strings)
-                print(trg)
-                
-                
 
             # Duplicate corpus in upper case to translate properly uppercase text
             if augmentation_cap == AUGMENTATION_CAP_BOTH_LANGUAGE_PAIRS:
@@ -291,17 +278,6 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
             strings += 1
             cnt_steps_val += 1
             cnt_steps_test += 1
-            
-            tgt_target_train.flush()
-            l = file_len(os.path.join(tgt_dir, "tgt-train.txt"))
-            if l != strings * 2:
-                print("oh")
-                print(l)
-                print(strings *2)
-                print(src)
-                print(trg)
-                exit(0)
-            
 
     pduplicated = duplicated * 100 / strings
     pdots = dots * 100 / strings
