@@ -18,11 +18,11 @@ fi
 modelRootDir=exported/
 echo "Test data set" > bleu.txt
 model_to_txt -m $srcModelName -f src-test.txt -t predictions-test.txt -x $modelRootDir
-sacrebleu tgt-test.txt $tokenizer -i predictions-test.txt -m bleu chrf --format text >> bleu.txt
+sacrebleu tgt-test.txt $tokenizer --confidence -i predictions-test.txt -m bleu chrf --format text >> bleu.txt
 
 echo "Flores data set" >> bleu.txt
 model_to_txt -m $srcModelName -f flores200.$srcLanguage -t predictions-flores.txt -x $modelRootDir
-sacrebleu $tokenizer flores200.$tgtLanguage -i predictions-flores.txt -m bleu chrf --format text >> bleu.txt
+sacrebleu $tokenizer flores200.$tgtLanguage --confidence -i predictions-flores.txt -m bleu chrf --format text >> bleu.txt
 
 cat bleu.txt
 
