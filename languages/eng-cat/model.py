@@ -18,7 +18,7 @@ class SoftcatalaModel(onmt.models.Transformer):
 
 model = SoftcatalaModel
 
-# TranfomerRelative: *** model cfg: num_units: 512, num_heads: 8, ffn_inner_dim: 2048, maximum_relative_position: 20
+# TransformerRelative: *** model cfg: num_units: 512, num_heads: 8, ffn_inner_dim: 2048, maximum_relative_position: 20
 #
 #          num_units: The number of hidden units.
 #          num_heads: The number of heads in each self-attention layers.
