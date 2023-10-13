@@ -7,7 +7,7 @@ class SoftcatalaModel(onmt.models.Transformer):
 
     def __init__(self):
         super().__init__(
-            # TranfomerRelative + 30%
+            # TransformerRelative + 30%
             num_units=656,
             num_heads=16,
             ffn_inner_dim=2656,
