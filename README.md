@@ -67,8 +67,8 @@ At Softcatalà we built also command line tools to translate TXT and PO files. S
 Download the model and unpack it:
 
 ```bash
-https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eng-cat-2022-11-09.zip
-unzip eng-cat-2022-11-09.zip
+wget https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eng-cat-2023-10-30.zip
+unzip eng-cat-2023-10-30.zip
 ```
 
 Install dependencies:
