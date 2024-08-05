@@ -3,32 +3,13 @@
 #
 # Author Jordi Mas i Hernandez <jmas@softcatala.org>
 
-from bs4 import BeautifulSoup
-import requests
 import os
 import shutil
 import re
 import json
-from urllib.request import Request, urlopen
 from urllib.parse import urlparse
+from remotemodels import RemoteModels
 
-
-URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/'
-EXT = 'zip'
-
-def get_list_of_models(url, ext=''):
-    page = requests.get(url).text
-    soup = BeautifulSoup(page, 'html.parser')
-    return [url + node.get('href') for node in soup.find_all('a') if node.get('href').endswith(ext)]
-
-
-def download_file(url, filename):
-    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    infile = urlopen(req)
-    output = open(filename, 'wb')
-    output.write(infile.read())
-    output.close()
-#    print(f"Downloaded {url}")
 
 def get_language_pair(url):
     a = urlparse(url)
@@ -169,7 +150,7 @@ def get_metrics_from_model_zipfile(url, language_pair):
     os.mkdir(DIR)
     os.chdir(DIR)
 
-    download_file(url, ZIP_FILE)
+    RemoteModels().download_file(url, ZIP_FILE)
 
     cmd = 'unzip {0} > /dev/null'.format(ZIP_FILE)
     os.system(cmd)
@@ -191,7 +172,7 @@ def main():
         table_md.write(f"{head}\n")
         table_cvs.write("{0}\n".format(head.replace("|",",")))
         table_md.write("|---|---|---|---|---|---|---|---\n")
-        models = get_list_of_models(URL, EXT)
+        models = RemoteModels().get_list_of_models()
         models = get_sorted_models(models)
         for url in models:
                          
@@ -219,6 +200,7 @@ def main():
             cnt_models +=1
 
     print(f"\nProcessed {cnt_models} models")
+
 
 if __name__ == "__main__":
     main()
