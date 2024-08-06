@@ -34,7 +34,7 @@ Language pair | SC model BLEU | SC Flores200 BLEU | Google BLEU | Meta NLLB200 B
 
 Legend:
 * *SC Model BLEU* column indicates the Softcatalà models' BLEU score against the corpus test dataset (from train/dev/test)
-* *SC Flores200 BLEU* column indicates the Softcatalà models' BLEU score against [Flores200 benchmark dataset](https://github.com/facebookresearch/flores). This provides an external evaluation
+* *SC Flores200 BLEU* column indicates the Softcatalà models' BLEU score against [Flores200 benchmark dataset](https://github.com/facebookresearch/flores) devtest split. This provides an external evaluation
 * *Google BLEU* is the BLUE score of Google Translate using the Flores200 benchmark
 * *Opus-MT BLEU* is the BLUE score of the [Opus-MT models](https://github.com/Helsinki-NLP/Opus-MT) using the Flores200 benchmark (our ambition is to outperform them)
 * *Sentences* is the number of sentences in the corpus used for training
