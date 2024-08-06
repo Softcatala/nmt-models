@@ -12,7 +12,7 @@ def main():
         for language_pair in ["eng-cat", "cat-eng" "deu-cat", "cat-deu"]:
             if language_pair in model_url:
                 print(f"model: {model_url}")
-                PATH = (f"opennmt-{language_pair}")
+                PATH = (f"translate-{language_pair}")
                 GIT_URL = f"https://huggingface.co/softcatala/{PATH}"
                 cmd = f'git clone {GIT_URL}'
                 os.system(cmd)
