@@ -19,7 +19,6 @@
 # Boston, MA 02111-1307, USA.
 
 import os
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 import datetime
 import json
 
@@ -62,25 +61,29 @@ def _translate(tokenizer, translator, src):
     return translated
     
 def main():
-    print("Translates flores200 datasets using HuggingFace Facebook nllb200 models")
+    print("Translates flores200 datasets using HuggingFace Aina models")
 
     pair_languages = {
-        "en-ca" : ["eng", "cat"],
-        "ca-en" : ["cat", "eng"],
+        "eng-cat" : ["en", "ca"],
+        "cat-eng" : ["ca", "en"],
+        "deu-cat" : ["de", "ca"],
+        "cat-deu" : ["ca", "de"],
     }
 
     blue_scores = {}
  
     for pair_language in pair_languages:
-        source_language = pair_languages[pair_language][0]
-        target_language = pair_languages[pair_language][1]
-        model_name = f"mt-aina-{pair_language}"
+        source_language_two_digits = pair_languages[pair_language][0]
+        target_language_two_digits = pair_languages[pair_language][1]
+        source_language_three_digits, target_language_three_digits = pair_language.split("-")
 
-        hypotesis_file = f"mt-aina/flores200-{model_name}-{source_language}-{target_language}.{target_language}"
+        model_name = f"aina-translator-{source_language_two_digits}-{target_language_two_digits}"
+
+        hypotesis_file = f"mt-aina/flores200-{model_name}.{target_language_three_digits}"
         print(hypotesis_file)
-        input_file = f"flores200.{source_language}"
-
-        model_dir = snapshot_download(repo_id=f"projecte-aina/{model_name}", revision="main")
+        input_file = f"flores200.{source_language_three_digits}"
+        hf_path = f"projecte-aina/{model_name}"
+        model_dir = snapshot_download(repo_id=hf_path, revision="main")
         tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = model_dir + "/spm.model")
         translator = ctranslate2.Translator(model_dir)
 
@@ -104,10 +107,10 @@ def main():
                         print(cnt)
                     
 
-        reference_file = f"flores200.{target_language}"
+        reference_file = f"flores200.{target_language_three_digits}"
         sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
-        blue_scores[f'{source_language}-{target_language}'] = sacrebleu
-        print(f"'{source_language}-{target_language}', BLEU: '{sacrebleu}'")
+        blue_scores[f'{source_language_three_digits}-{target_language_three_digits}'] = sacrebleu
+        print(f"'{source_language_three_digits}-{target_language_three_digits}', BLEU: '{sacrebleu}'")
     s = 'Time used: {0}'.format(datetime.datetime.now() - start_time)
     print(s)
     save_json(blue_scores)
