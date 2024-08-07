@@ -9,6 +9,7 @@ from remotemodels import RemoteModels
 def main():
     models = RemoteModels().get_list_of_models()
     for model_url in models:
+
         for language_pair in ["eng-cat", "cat-eng" "deu-cat", "cat-deu", "fra-cat", "cat-fra"]:
             if language_pair in model_url:
                 print(f"model: {model_url}")
@@ -20,8 +21,9 @@ def main():
                 ZIP_FILE = os.path.join(PATH, "model.zip")
                 RemoteModels().download_file(model_url, ZIP_FILE)
 
-                for subdir in ["ctranslate2", "tokenizer"]:
-                    cmd = f'unzip -d {PATH} -o -j {ZIP_FILE} "{language_pair}/{subdir}/*"'
+                for subdir in ["ctranslate2", "tokenizer", "metadata"]:
+                    files = "model_description.txt" if subdir == "metadata" else "*"
+                    cmd = f'unzip -d {PATH} -o -j {ZIP_FILE} "{language_pair}/{subdir}/{files}"'
                     os.system(cmd)
 
                 os.remove(ZIP_FILE)
