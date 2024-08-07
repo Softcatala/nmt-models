@@ -24,5 +24,7 @@ def main():
                     cmd = f'unzip -d {PATH} -o -j {ZIP_FILE} "{language_pair}/{subdir}/*"'
                     os.system(cmd)
 
+                os.remove(ZIP_FILE)
+
 if __name__ == "__main__":
     main()
