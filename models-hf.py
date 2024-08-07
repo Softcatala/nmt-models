@@ -10,7 +10,7 @@ def main():
     models = RemoteModels().get_list_of_models()
     for model_url in models:
 
-        for language_pair in ["eng-cat", "cat-eng" "deu-cat", "cat-deu", "fra-cat", "cat-fra"]:
+        for language_pair in ["eng-cat", "cat-eng", "deu-cat", "cat-deu", "fra-cat", "cat-fra"]:
             if language_pair in model_url:
                 print(f"model: {model_url}")
                 PATH = (f"translate-{language_pair}")
