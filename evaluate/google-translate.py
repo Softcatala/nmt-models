@@ -160,6 +160,9 @@ def main():
 
         "gl-ca" : ["glg", "cat"],
         "ca-gl" : ["cat", "glg"],
+
+        "eu-ca" : ["eus", "cat"],
+        "ca-eu" : ["cat", "eus"],
     }
 
     blue_scores = {}
