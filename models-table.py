@@ -96,6 +96,7 @@ def convert_iso_639_3_to_string(language_pair):
         "jpn" : "Japanese",
         "glg" : "Galician",
         "oci" : "Occitan",
+        "eus" : "Basque",
     }
 
     for iso in languages.keys():
