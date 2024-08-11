@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone --depth=1 https://github.com/Softcatala/parallel-catalan-corpus corpus-raw
+git clone https://github.com/Softcatala/parallel-catalan-corpus corpus-raw
 cd corpus-raw
 git checkout eng-cat-aina
 
