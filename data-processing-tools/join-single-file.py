@@ -10,6 +10,7 @@ import datetime
 import unicodedata
 from optparse import OptionParser
 import resource
+import re
 
 g_configuration = None
 
@@ -161,6 +162,9 @@ def _create_dir_if_does_exist(directory):
     if not os.path.exists(directory):
        os.makedirs(directory)
 
+def _clean_for_dup_detection(string):
+    return re.sub(r'\s+', '', string)
+
 # https://arxiv.org/abs/1907.01279 contains an overview of some of the techniques used here
 def split_in_six_files(src_filename, tgt_filename, directory, source_lang, target_lang):
 
@@ -227,7 +231,8 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
                 equal += 1
                 continue
 
-            pair = hash(src + trg)
+            with_no_spaces = _clean_for_dup_detection(src + trg)
+            pair = hash(with_no_spaces)
             if pair in pairs:
                 duplicated = duplicated + 1
                 continue

@@ -118,5 +118,10 @@ class TestJoinSingleFile(unittest.TestCase):
         self.assertEquals(1000, steps_val)
         self.assertEquals(500, steps_test)
 
+    def test___clean_for_dup_detection(self):
+        self.assertEquals("Word1Word2", join_single_file._clean_for_dup_detection("Word1 Word2\n"))
+        self.assertEquals("Word1Word2", join_single_file._clean_for_dup_detection("Word1\tWord2\r"))
+        self.assertEquals("Word1Word2.", join_single_file._clean_for_dup_detection("Word1  Word2.\r"))
+
 if __name__ == '__main__':
     unittest.main()
