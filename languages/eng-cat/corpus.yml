@@ -1,28 +1,20 @@
 source_files:
-    - corpus-raw/MemoriesProjectesLliures.en-ca.en
-    - corpus-raw/WikiMatrix.en-ca.txt.en
-    - corpus-raw/globalvoices.en-ca.en
-    - corpus-raw/europarl.en-ca.en
-    - corpus-raw/OpenSubtitles2018.en-ca.en
-    - corpus-raw/tedtalks.en-ca.en
-    - corpus-raw/covost2.ca-en.en
-    - corpus-raw/covost2.en-ca.en
-    - corpus-raw/wikimedia-ca-en.en
-    - corpus-raw/gene_crawling_ca-en.en
-    - corpus-raw/macocu-ca-en-1.en
-    - corpus-raw/macocu-ca-en-2.en
-
+    - corpus-raw//aina-eng-cat-1.en
+    - corpus-raw//aina-eng-cat-2.en
+    - corpus-raw//aina-eng-cat-3.en
+    - corpus-raw//aina-eng-cat-4.en
+    - corpus-raw//aina-eng-cat-5.en
+    - corpus-raw//aina-eng-cat-6.en
+    - corpus-raw//aina-eng-cat-7.en
+    - corpus-raw//aina-eng-cat-8.en
+    
 target_files:
-    - corpus-raw/MemoriesProjectesLliures.en-ca.ca
-    - corpus-raw/WikiMatrix.en-ca.txt.ca
-    - corpus-raw/globalvoices.en-ca.ca
-    - corpus-raw/europarl.en-ca.ca
-    - corpus-raw/OpenSubtitles2018.en-ca.ca
-    - corpus-raw/tedtalks.en-ca.ca
-    - corpus-raw/covost2.ca-en.ca
-    - corpus-raw/covost2.en-ca.ca
-    - corpus-raw/wikimedia-ca-en.ca
-    - corpus-raw/gene_crawling_ca-en.ca
-    - corpus-raw/macocu-ca-en-1.ca
-    - corpus-raw/macocu-ca-en-2.ca
+    - corpus-raw//aina-eng-cat-1.ca
+    - corpus-raw//aina-eng-cat-2.ca
+    - corpus-raw//aina-eng-cat-3.ca
+    - corpus-raw//aina-eng-cat-4.ca
+    - corpus-raw//aina-eng-cat-5.ca
+    - corpus-raw//aina-eng-cat-6.ca
+    - corpus-raw//aina-eng-cat-7.ca
+    - corpus-raw//aina-eng-cat-8.ca
 
