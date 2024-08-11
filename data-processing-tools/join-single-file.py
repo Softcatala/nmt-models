@@ -9,6 +9,7 @@ import os
 import datetime
 import unicodedata
 from optparse import OptionParser
+import resource
 
 g_configuration = None
 
@@ -226,7 +227,7 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
                 equal += 1
                 continue
 
-            pair = src + trg
+            pair = hash(src + trg)
             if pair in pairs:
                 duplicated = duplicated + 1
                 continue
@@ -279,6 +280,7 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
             cnt_steps_val += 1
             cnt_steps_test += 1
 
+    max_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
     pduplicated = duplicated * 100 / strings
     pdots = dots * 100 / strings
     pclean_src = clean_src * 100 / strings
@@ -289,6 +291,7 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
     print(f"Cleaned acute accents. src: {clean_src} ({pclean_src:.2f}%), tgt: {clean_trg} ({pclean_trg:.2f}%)")
     print(f"Empty sentences or diff len too long: {bad_length} ({pbad_length:.2f}%)")
     print(f"Dots: {dots} ({pdots:.2f}%), equal: {equal} ({pequal:.2f}%)")
+    print(f"max_rss {max_rss:.2f} MB")
 
 def append_lines_from_file(src_filename, trg_file, max_lines):
     lines = 0
