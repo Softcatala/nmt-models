@@ -4,7 +4,7 @@
 git clone --single-branch --branch eng-cat-aina --depth 1 https://github.com/Softcatala/parallel-catalan-corpus corpus-raw
 cd corpus-raw
 
-declare -a arr=("eng-cat" "deu-cat" "ita-cat" "fra-cat" "spa-cat" "nld-cat" "por-cat" "jpn-cat" "glg-cat" "oci-cat")
+declare -a arr=("eng-cat" "deu-cat" "ita-cat" "fra-cat" "spa-cat" "nld-cat" "por-cat" "jpn-cat" "glg-cat" "oci-cat" "eus-cat")
 
 for dirname in "${arr[@]}"; do
     echo Copying $dirname

@@ -15,6 +15,8 @@ Language pair | SC model BLEU | SC Flores200 BLEU | Google BLEU | Meta NLLB200 B
 |Catalan-German | 28.5 |25.4 |32.9 |29.1|15.8| 3142257 | [cat-deu-2022-11-16.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-deu-2022-11-16.zip)
 |English-Catalan | 46.9 |43.8 |46.0 |41.7|29.8| 7856208 | [eng-cat-2023-10-30.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eng-cat-2023-10-30.zip)
 |Catalan-English | 47.4 |43.5 |47.0 |48.0|29.6| 7856208 | [cat-eng-2023-10-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-eng-2023-10-29.zip)
+|Basque-Catalan | 38.8 |24.9 |29.6 |N/A|N/A| 9546180 | [eus-cat-2024-08-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eus-cat-2024-08-09.zip)
+|Catalan-Basque | 27.3 |17.1 |18.0 |N/A|N/A| 9546180 | [cat-eus-2024-08-12.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-eus-2024-08-12.zip)
 |French-Catalan | 41.3 |31.6 |37.3 |33.3|27.2| 2566302 | [fra-cat-2022-11-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/fra-cat-2022-11-09.zip)
 |Catalan-French | 41.4 |35.4 |41.7 |39.6|27.9| 2566302 | [cat-fra-2022-11-14.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-fra-2022-11-14.zip)
 |Galician-Catalan | 74.1 |31.4 |36.5 |33.2|N/A| 2710149 | [glg-cat-2022-11-17.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/glg-cat-2022-11-17.zip)

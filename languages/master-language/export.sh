@@ -16,8 +16,7 @@ onmt-main --config data.yml --auto_config export --export_dir $exportDir/tensorf
 echo "Model description: $modelName" >> $modelDescription
 echo "Date: $currentDate" >> $modelDescription
 python3 ../../install-scripts/stack-versions.py >> $modelDescription
-wc corpus/$modelName/src-train.txt -l > $exportDir/metadata/inputs_used.txt
-ls corpus/$modelName/*.txt -l >> $exportDir/metadata/inputs_used.txt
+wc src-train.txt -l > $exportDir/metadata/inputs_used.txt
 cp *.model $exportDir/tokenizer/
 cp corpus.yml data.yml model.py $exportDir/metadata/
 cp sp-vocab.txt.token $exportDir/tensorflow/assets/
