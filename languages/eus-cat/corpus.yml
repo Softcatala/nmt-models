@@ -1,0 +1,13 @@
+source_files:
+    - corpus-raw/eus-cat-1.eu
+    - corpus-raw/eus-cat-2.eu
+    - corpus-raw/eus-cat-3.eu
+    - corpus-raw/eus-cat-4.eu
+    - corpus-raw/eus-cat-5.eu
+
+target_files:
+    - corpus-raw/eus-cat-1.ca
+    - corpus-raw/eus-cat-2.ca
+    - corpus-raw/eus-cat-3.ca
+    - corpus-raw/eus-cat-4.ca
+    - corpus-raw/eus-cat-5.ca
