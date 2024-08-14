@@ -20,7 +20,7 @@ for dirname in "${arr[@]}"; do
     cp ../$inverted_pair/*.sh .
     cp ../$inverted_pair/*.yml .
     cp ../$inverted_pair/*.py .
-    ./copy-corpus.sh
+    ../master-language/copy-corpus.sh
     rm -r -f run/
     ./train.sh
     ./export.sh
