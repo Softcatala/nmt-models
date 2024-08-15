@@ -25,5 +25,6 @@ target_files:
     - corpus-raw/wikimedia-ca-en.ca
     - corpus-raw/gene_crawling_ca-en.ca
     - corpus-raw/macocu-ca-en-1.ca
+    - corpus-raw/macocu-ca-en-2.ca
     - corpus-raw/aina-eng-cat-1.ca
 
