@@ -1,5 +1,5 @@
-ctranslate2==2.24.0
-tensorflow==2.10.0
-OpenNMT-tf==2.29.1
+ctranslate2==3.22
+tensorflow==2.11
+OpenNMT-tf==2.32
 sacrebleu[ja]==2.1.0
 pyonmttok==1.34
