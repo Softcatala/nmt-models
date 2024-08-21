@@ -87,6 +87,7 @@ def _remove_special_newlines(result):
     mapping = {
                 u"\u2028" : '',
                 u"\u2029" : '',
+                u"\u0085" : '',
               }
 
     for char in mapping.keys():
