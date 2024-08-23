@@ -150,6 +150,9 @@ def _is_sentence_len_good(src, trg):
     return True
 
 # How to split test-val sets based on https://en.wikipedia.org/wiki/Per_mille
+# Two goals:
+# - The split is predictable instead of random
+# - The split has a good distribution over the different corpus
 def _get_val_test_split_steps(lines, per_mille_val, per_mille_test):
     lines_val = round(lines * per_mille_val / 1000)
     steps_val = round(lines / lines_val)
