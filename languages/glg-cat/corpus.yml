@@ -7,6 +7,8 @@ source_files:
     - corpus-raw/covost2.ca-en.gl
     - corpus-raw/covost2.en-ca.gl
     - corpus-raw/wikimedia-ca-en.gl
+    - corpus-raw/nllb-glg-cat-1.gl
+    - corpus-raw/nllb-glg-cat-2.gl
 
 target_files:
     - corpus-raw/MemoriesProjectesLliures.en-ca.ca
@@ -17,4 +19,5 @@ target_files:
     - corpus-raw/covost2.ca-en.ca
     - corpus-raw/covost2.en-ca.ca
     - corpus-raw/wikimedia-ca-en.ca
-
+    - corpus-raw/nllb-glg-cat-1.ca
+    - corpus-raw/nllb-glg-cat-2.ca
