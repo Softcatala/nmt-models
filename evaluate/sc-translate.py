@@ -33,12 +33,15 @@ def file_len(fname):
 
     return i + 1
 
-def get_sacrebleu(reference_file, hypotesis_file):
-    JSON_FILE = 'bleu.json'
+def get_sacrebleu(reference_file, hypotesis_file, target_language):
+    JSON_FILE = "bleu.json"
+    tokenizer = ""
 
-    cmd = f'sacrebleu {reference_file}  -i {hypotesis_file} -m bleu > {JSON_FILE}'
+    if target_language == "jpn":
+        tokenizer = "--tokenize ja-mecab"
+
+    cmd = f"sacrebleu {tokenizer} {reference_file}  -i {hypotesis_file} -m bleu > {JSON_FILE}"
     os.system(cmd)
-    print(cmd)
     with open(JSON_FILE) as f:
         data = json.load(f)
 
@@ -121,7 +124,7 @@ def main():
                     
 
         reference_file = f"flores200.{target_language}"
-        sacrebleu = get_sacrebleu(reference_file, hypotesis_file)
+        sacrebleu = get_sacrebleu(reference_file, hypotesis_file, target_language)
         blue_scores[f'{source_language}-{target_language}'] = sacrebleu
         print(f"'{source_language}-{target_language}', BLEU: '{sacrebleu}'")
     s = 'Time used: {0}'.format(datetime.datetime.now() - start_time)
