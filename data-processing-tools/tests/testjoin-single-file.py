@@ -86,12 +86,12 @@ class TestJoinSingleFile(unittest.TestCase):
         self.assertFalse(join_single_file._has_dot_or_equivalent("num1"))
         self.assertFalse(join_single_file._has_dot_or_equivalent("Hola"))
 
-    def test__is_sentence_len_good_len_zero(self):
+    def test_is_sentence_len_good_len_zero(self):
         self.assertFalse(join_single_file._is_sentence_len_good("", ""))
         self.assertFalse(join_single_file._is_sentence_len_good("A", ""))
         self.assertFalse(join_single_file._is_sentence_len_good("", "B"))
 
-    def test__is_sentence_len_good_diff(self):
+    def test_is_sentence_len_good_diff(self):
         src = "Mai"
         trg = "localized lexeme inflections - short month form||Jun"
 
@@ -104,7 +104,7 @@ class TestJoinSingleFile(unittest.TestCase):
         trg = "Tots els contactes"
         self.assertFalse(join_single_file._is_sentence_len_good(src, trg))
 
-    def test__is_sentence_len_good_true(self):
+    def test_is_sentence_len_good_true(self):
         src = "May"
         trg = "Maig"
         self.assertTrue(join_single_file._is_sentence_len_good(src, trg))
@@ -113,15 +113,20 @@ class TestJoinSingleFile(unittest.TestCase):
         trg = "Tots els contactes"
         self.assertTrue(join_single_file._is_sentence_len_good(src, trg))
 
-    def test__get_val_test_split_lines(self):
+    def test_get_val_test_split_lines(self):
         steps_val, steps_test = join_single_file._get_val_test_split_steps(lines = 1000000, per_mille_val = 1, per_mille_test = 2)
         self.assertEquals(1000, steps_val)
         self.assertEquals(500, steps_test)
 
-    def test___clean_for_dup_detection(self):
+    def test_clean_for_dup_detection(self):
         self.assertEquals("Word1Word2", join_single_file._clean_for_dup_detection("Word1 Word2\n"))
         self.assertEquals("Word1Word2", join_single_file._clean_for_dup_detection("Word1\tWord2\r"))
         self.assertEquals("Word1Word2.", join_single_file._clean_for_dup_detection("Word1  Word2.\r"))
+
+    def test_remove_special_newlines(self):
+        self.assertEquals(("Holamón", True), join_single_file._remove_special_newlines("Hola\u2028món"))
+        self.assertEquals(("Holamón", True), join_single_file._remove_special_newlines("Hola\u2029món"))
+        self.assertEquals(("Holamón", True), join_single_file._remove_special_newlines("Hola\u0085món"))
 
 if __name__ == '__main__':
     unittest.main()

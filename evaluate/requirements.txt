@@ -1,4 +1,6 @@
-transformers==4.19
-sentencepiece==0.1.96
-torch==1.11
-sacrebleu==2.1.0
+transformers==4.44.2
+sentencepiece==0.2.0
+torch==2.2.2
+sacrebleu[ja]==2.1.0
+ctranslate2==3.22
+pyonmttok==1.34

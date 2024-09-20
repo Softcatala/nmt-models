@@ -79,6 +79,9 @@ def main():
 
         "oc-ca" : ["oci", "cat"],
         "ca-oc" : ["cat", "oci"],
+
+        "eu-ca" : ["eus", "cat"],
+        "ca-eu" : ["cat", "eus"],
     }
 
     blue_scores = {}
