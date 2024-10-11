@@ -11,6 +11,7 @@ source_files:
     - corpus-raw/gene_crawling_ca-en.en
     - corpus-raw/macocu-ca-en-1.en
     - corpus-raw/macocu-ca-en-2.en
+    - corpus-raw/nllb-eng-cat-1.en
 
 target_files:
     - corpus-raw/MemoriesProjectesLliures.en-ca.ca
@@ -25,4 +26,4 @@ target_files:
     - corpus-raw/gene_crawling_ca-en.ca
     - corpus-raw/macocu-ca-en-1.ca
     - corpus-raw/macocu-ca-en-2.ca
-
+    - corpus-raw/nllb-eng-cat-1.ca
