@@ -9,12 +9,13 @@ The corpus used to train these models are available here: https://github.com/Sof
 And here the tools that at Softcatalà to serve these models in production: https://github.com/Softcatala/nmt-softcatala
 
 # Models
+
 Language pair | SC model BLEU | SC Flores200 BLEU | Google BLEU | Meta NLLB200 BLEU | Opus-MT BLEU | Sentences | Download model
 |---|---|---|---|---|---|---|---
-|German-Catalan | 34.8 |28.9 |35.5 |30.7|18.5| 3142257 | [deu-cat-2022-11-14.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/deu-cat-2022-11-14.zip)
-|Catalan-German | 28.5 |25.4 |32.9 |29.1|15.8| 3142257 | [cat-deu-2022-11-16.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-deu-2022-11-16.zip)
-|English-Catalan | 46.9 |43.8 |46.0 |41.7|29.8| 7856208 | [eng-cat-2023-10-30.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eng-cat-2023-10-30.zip)
-|Catalan-English | 47.4 |43.5 |47.0 |48.0|29.6| 7856208 | [cat-eng-2023-10-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-eng-2023-10-29.zip)
+|German-Catalan | 35.3 |29.2 |35.5 |30.7|18.5| 3137426 | [deu-cat-2024-10-02.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/deu-cat-2024-10-02.zip)
+|Catalan-German | 29.0 |25.4 |32.9 |29.1|15.8| 3137426 | [cat-deu-2024-10-06.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-deu-2024-10-06.zip)
+|English-Catalan | 47.9 |43.9 |46.0 |41.7|29.8| 9617177 | [eng-cat-2024-09-24.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eng-cat-2024-09-24.zip)
+|Catalan-English | 49.8 |43.8 |47.0 |48.0|29.6| 9617177 | [cat-eng-2024-09-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-eng-2024-09-29.zip)
 |Basque-Catalan | 38.8 |24.9 |29.6 |25.7|N/A| 9546180 | [eus-cat-2024-08-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/eus-cat-2024-08-09.zip)
 |Catalan-Basque | 27.3 |17.1 |18.0 |10.5|N/A| 9546180 | [cat-eus-2024-08-12.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-eus-2024-08-12.zip)
 |French-Catalan | 43.0 |33.8 |37.3 |33.3|27.2| 6392858 | [fra-cat-2024-08-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/fra-cat-2024-08-29.zip)
@@ -23,8 +24,8 @@ Language pair | SC model BLEU | SC Flores200 BLEU | Google BLEU | Meta NLLB200 B
 |Catalan-Galician | 69.4 |32.2 |33.1 |31.7|N/A| 5644577 | [cat-glg-2024-09-04.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-glg-2024-09-04.zip)
 |Italian-Catalan | 41.0 |27.0 |30.6 |27.8|22.0| 4146825 | [ita-cat-2024-08-29.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/ita-cat-2024-08-29.zip)
 |Catalan-Italian | 38.3 |25.1 |27.5 |26.0|19.2| 4146825 | [cat-ita-2024-08-30.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-ita-2024-08-30.zip)
-|Japanese-Catalan | 24.9 |17.8 |23.4 |N/A|N/A| 1997740 | [jpn-cat-2023-02-17.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/jpn-cat-2023-02-17.zip)
-|Catalan-Japanese | 21.3 |19.8 |32.5 |N/A|N/A| 1997740 | [cat-jpn-2023-02-18.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-jpn-2023-02-18.zip)
+|Japanese-Catalan | 25.5 |17.5 |23.4 |N/A|N/A| 1996286 | [jpn-cat-2024-10-04.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/jpn-cat-2024-10-04.zip)
+|Catalan-Japanese | 21.8 |20.6 |32.5 |N/A|N/A| 3992572 | [cat-jpn-2024-10-08.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-jpn-2024-10-08.zip)
 |Dutch-Catalan | 30.4 |20.3 |27.1 |24.8|15.8| 2208538 | [nld-cat-2022-11-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/nld-cat-2022-11-19.zip)
 |Catalan-Dutch | 27.6 |18.2 |23.4 |21.8|13.4| 2208538 | [cat-nld-2022-11-19.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/cat-nld-2022-11-19.zip)
 |Occitan-Catalan | 74.9 |32.5 |N/A |36.2|N/A| 2711350 | [oci-cat-2022-11-17.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22/oci-cat-2022-11-17.zip)
