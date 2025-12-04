@@ -113,7 +113,7 @@ def evaluate_model(model_path):
                 count = 0
                 for line in src:
                     translated = llm_translate(model, tokenizer, line.strip(), src_lang, tgt_lang)
-                    print(f"{line.strip()} - {translated}")
+                    print(f"{count} - {line.strip()} - {translated}")
                     out.write(translated + "\n")
                     count += 1
                     if count % 50 == 0:
