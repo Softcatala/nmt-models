@@ -8,12 +8,20 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers import Mistral3ForConditionalGeneration
 
+# Limit PyTorch to use all available cores
+# torch.set_num_threads(os.cpu_count())
+# torch.set_num_interop_threads(os.cpu_count() -4)
+
+print("PyTorch threads:", torch.get_num_threads())
+
+
 # ----------------------------------------------------------
 # CONFIG: Only full HF paths here
 # ----------------------------------------------------------
 MODELS = [
-    "mistralai/Ministral-3-14B-Instruct-2512-BF16",
-    "google/gemma-3-12b-it",
+    #    "mistralai/Ministral-3-14B-Instruct-2512-BF16",
+#    "google/gemma-3-4b-it",
+    "Qwen/Qwen3-14B",
 ]
 
 # ----------------------------------------------------------
@@ -22,6 +30,7 @@ MODELS = [
 PAIR_LANGUAGES = {
     "en-ca": ["English", "Catalan"],
 }
+
 
 # ----------------------------------------------------------
 # Helper functions
@@ -32,6 +41,7 @@ def file_len(fname):
     with open(fname) as f:
         return sum(1 for _ in f)
 
+
 def get_sacrebleu(reference_file, hypotesis_file):
     JSON_FILE = "bleu.json"
     cmd = f"sacrebleu {reference_file} -i {hypotesis_file} -m bleu > {JSON_FILE}"
@@ -40,34 +50,54 @@ def get_sacrebleu(reference_file, hypotesis_file):
         data = json.load(f)
     return f"{data['score']:0.1f}"
 
+
 def save_model_bleu(model_id, scores):
     filename = f"{model_id}-bleu.json"
     with open(filename, "w") as f:
         json.dump(scores, f, indent=4)
     print(f"Saved BLEU results to: {filename}")
 
-# ----------------------------------------------------------
-# Translation for causal LLMs
-# ----------------------------------------------------------
-def llm_translate(model, tokenizer, text, src_lang, tgt_lang):
+
+def llm_translate(model_id, model, tokenizer, text, src_lang, tgt_lang):
+
+    #    print(f"model: {model_id}")
+    #    print(f"*** prompt: -- {prompt_text} --")
     prompt = (
-        f"Translate the following text from {src_lang} to {tgt_lang}. Provide ONLY the translation:\n"
-        f"{text}\n\n"
-        f"Translation:"
+        f"Translate the following text from {src_lang} to {tgt_lang}. "
+        f"Provide ONLY the translation:\n{text}\n\nTranslation:"
     )
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+
+    # Use chat template with enable_thinking=False for Qwen models
+    if "qwen" in model_id.lower():
+        messages = [{"role": "user", "content": prompt}]
+        prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,  # Changed to True so model knows to generate
+            enable_thinking=False,  # Disable thinking mode
+        )
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    else:
+        # For non-Qwen models, use the original approach
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
     with torch.no_grad():
-        output = model.generate(
-            **inputs,
-            max_new_tokens=200,
-            do_sample=False
-        )
+        output = model.generate(**inputs, max_new_tokens=200, do_sample=False)
 
-    decoded = tokenizer.decode(output[0], skip_special_tokens=True)
-    if "Translation:" in decoded:
+    if "qwen" in model_id.lower():
+        # KEY FIX: Decode only the newly generated tokens, not the prompt
+        input_length = inputs["input_ids"].shape[1]
+        generated_tokens = output[0][input_length:]
+    else:
+        generated_tokens = output[0]
+
+    decoded = tokenizer.decode(generated_tokens, skip_special_tokens=True)
+
+    if "Translation:" in decoded:  # Gemma
         return decoded.split("Translation:", 1)[1].strip()
+
     return decoded.strip()
+
 
 # ----------------------------------------------------------
 # Evaluation loop for one model
@@ -83,17 +113,15 @@ def evaluate_model(model_path):
 
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 
-    if 'stral' in model_path:
+    if "stral" in model_path:
         model = Mistral3ForConditionalGeneration.from_pretrained(
             model_path,
             device_map="cpu",  # runs entirely on CPU
-            quantization_config=None
+            quantization_config=None,
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            torch_dtype=torch.float16,
-            device_map="auto"
+            model_path, torch_dtype=torch.float16, device_map="auto"
         )
 
     bleu_scores = {}
@@ -112,7 +140,9 @@ def evaluate_model(model_path):
             with open(input_file, "r") as src, open(hyp_file, "w") as out:
                 count = 0
                 for line in src:
-                    translated = llm_translate(model, tokenizer, line.strip(), src_lang, tgt_lang)
+                    translated = llm_translate(
+                        model_id, model, tokenizer, line.strip(), src_lang, tgt_lang
+                    )
                     print(f"{count} - {line.strip()} - {translated}")
                     out.write(translated + "\n")
                     count += 1
@@ -130,6 +160,7 @@ def evaluate_model(model_path):
 
     save_model_bleu(model_id, bleu_scores)
     return model_id, elapsed
+
 
 # ----------------------------------------------------------
 # Master loop: evaluate all models in MODELS array
@@ -149,6 +180,6 @@ def main():
     print("Total time:", datetime.datetime.now() - total_start)
     print("Timing info saved to model_times.json")
 
+
 if __name__ == "__main__":
     main()
-
