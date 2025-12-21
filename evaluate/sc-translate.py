@@ -52,15 +52,15 @@ def save_json(scores):
 		json.dump(scores, outfile, indent=4)
 
 import ctranslate2
-import pyonmttok
+import sentencepiece as spm
 from huggingface_hub import snapshot_download
 
 
-def _translate(tokenizer, translator, src):
-    tokenized=tokenizer.tokenize(src)
+def _translate(sp, translator, src):
+    tokenized = sp.encode(src, out_type=str)
 
-    translated = translator.translate_batch([tokenized[0]])
-    translated = tokenizer.detokenize(translated[0][0]['tokens'])
+    translated = translator.translate_batch([tokenized])
+    translated = sp.decode(translated[0].hypotheses[0])
     return translated
     
 def main():
@@ -100,7 +100,7 @@ def main():
         input_file = f"flores200.{source_language}"
 
         model_dir = snapshot_download(repo_id=f"softcatala/{model_name}", revision="main")
-        tokenizer=pyonmttok.Tokenizer(mode="none", sp_model_path = model_dir + "/sp_m.model")
+        sp = spm.SentencePieceProcessor(model_file=model_dir + "/sp_m.model")
         translator = ctranslate2.Translator(model_dir)
 
         start_time = datetime.datetime.now()
@@ -115,7 +115,7 @@ def main():
                     if not src:
                         break
                     
-                    t = _translate(tokenizer, translator, src)
+                    t = _translate(sp, translator, src)
           #          print(t)
                     target.write(t + "\n")
                     cnt += 1
