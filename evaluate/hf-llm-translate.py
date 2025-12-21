@@ -21,8 +21,9 @@ print("PyTorch threads:", torch.get_num_threads())
 MODELS = [
     #    "mistralai/Ministral-3-14B-Instruct-2512-BF16",
 #    "google/gemma-3-4b-it",
-    "Qwen/Qwen3-14B",
-]
+#    "Qwen/Qwen3-14B",
+    "utter-project/EuroLLM-9B",
+]   
 
 # ----------------------------------------------------------
 # FLORES LANG PAIRS

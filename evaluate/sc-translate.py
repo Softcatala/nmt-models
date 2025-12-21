@@ -68,25 +68,6 @@ def main():
 
     pair_languages = [
         "cat-eng",
-        "eng-cat",
-        "cat-deu",
-        "deu-cat",
-        "cat-fra",
-        "fra-cat",
-        "cat-spa",
-        "spa-cat",
-        "cat-eus",
-        "eus-cat",
-        "cat-nld",
-        "nld-cat",
-        "ita-cat",
-        "cat-ita",
-        "glg-cat",
-        "cat-glg",
-        "jpn-cat",
-        "cat-jpn",
-        "oci-cat",
-        "cat-oci",
     ]
 
     blue_scores = {}
