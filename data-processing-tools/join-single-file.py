@@ -176,7 +176,7 @@ def split_in_six_files(src_filename, tgt_filename, directory, source_lang, targe
     strings = 0
     duplicated = 0
 
-    print("Split src and tgt files in 6 files for training, text and validation")
+    print("Split src and tgt files in 6 files for training, test and validation")
 
     total_lines = file_len(src_filename)
     SAMPLE_PER_MILLE_VAL = 1
