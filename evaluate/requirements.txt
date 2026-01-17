@@ -3,4 +3,3 @@ sentencepiece==0.2.0
 torch==2.2.2
 sacrebleu[ja]==2.1.0
 ctranslate2==3.22
-pyonmttok==1.34
